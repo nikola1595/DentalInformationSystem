@@ -20,7 +20,7 @@ namespace DentalInformationSystem.Models
         public string Surname { get; set; }
         [Required, Display(Name = "Ime jednog roditelja"), StringLength(25)]
         public string NameOfOneParent { get; set; }
-        [Required, Display(Name = "Godina rodjenja"), MaxLength(4)]
+        [Required, Display(Name = "Godina rodjenja")]
         public int YearOfBirth { get; set; }
         [Required, Display(Name = "Adresa"), StringLength(50)]
         public string Address { get; set; }

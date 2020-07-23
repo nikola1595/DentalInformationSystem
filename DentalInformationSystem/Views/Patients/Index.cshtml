@@ -1,0 +1,71 @@
+﻿@model IEnumerable<DentalInformationSystem.Models.Patient>
+
+@{
+    ViewData["Title"] = "Početna";
+}
+
+<h1>Lista pacijenata</h1>
+
+<p>
+    @Html.ActionLink("Dodaj novog pacijenta", "Create", "Patients", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NameOfOneParent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telephone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YearOfBirth)
+            </th>
+            <th>Opcije</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameOfOneParent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telephone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YearOfBirth)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PatientID">Izmeni</a> |
+                <a asp-action="Details" asp-route-id="@item.PatientID">Detalji</a> |
+                <a asp-action="Delete" asp-route-id="@item.PatientID">Obriši</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -22,7 +22,7 @@ namespace DentalInformationSystem.Models
         public string City { get; set; }
         [Required, Display(Name = "Kontakt telefon"), StringLength(30)]
         public string Telephone { get; set; }
-        [Required, Display(Name = "Godina rodjenja"), MaxLength(4)]
+        [Required, Display(Name = "Godina rodjenja")]
         public int YearOfBirth { get; set; }
 
     }
