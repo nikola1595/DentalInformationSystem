@@ -29,8 +29,9 @@ namespace DentalInformationSystem.Models
         public string City { get; set; }
         [Required, Display(Name="Anamneza"),MaxLength(255)]
         public string Anamnesis { get; set; }
-        [Required, Display(Name = "Dijagnoza"), MaxLength(255)]
-        public string Diagnosis { get; set; }
+        public Diagnosis Diagnosis { get; set; }
+        [Required, Display(Name = "Dijagnoza")]
+        public int DiagnosisID { get; set; }
         [Required, Display(Name = "Terapija"), MaxLength(255)]
         public string Therapy { get; set; }
         [Required, Display(Name = "Pecat"), MaxLength(255)]

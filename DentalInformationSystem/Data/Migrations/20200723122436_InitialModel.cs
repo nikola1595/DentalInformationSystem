@@ -41,7 +41,7 @@ namespace DentalInformationSystem.Data.Migrations
                     Address = table.Column<string>(maxLength: 50, nullable: false),
                     City = table.Column<string>(maxLength: 25, nullable: false),
                     Anamnesis = table.Column<string>(maxLength: 255, nullable: false),
-                    Diagnosis = table.Column<string>(maxLength: 255, nullable: false),
+                    DiagnosisID = table.Column<int>(maxLength: 255, nullable: false),
                     Therapy = table.Column<string>(maxLength: 255, nullable: false),
                     Signet = table.Column<string>(maxLength: 255, nullable: false)
                 },

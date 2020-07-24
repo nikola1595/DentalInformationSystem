@@ -23,7 +23,7 @@ namespace DentalInformationSystem.Controllers
         // GET: Protocols
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Protocols.Include(p => p.Patient);
+            var applicationDbContext = _context.Protocols.Include(p => p.Patient).Include(d => d.Diagnosis);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -39,7 +39,7 @@ namespace DentalInformationSystem.Controllers
             }
 
             var protocol = await _context.Protocols
-                .Include(p => p.Patient)
+                .Include(p => p.Patient).Include(d => d.Diagnosis)
                 .FirstOrDefaultAsync(m => m.ProtocolID == id);
             if (protocol == null)
             {
@@ -52,6 +52,7 @@ namespace DentalInformationSystem.Controllers
         // GET: Protocols/Create
         public IActionResult Create()
         {
+            //patients
             var patients = _context.Patients
                 .Select(p => new
                 {
@@ -61,6 +62,21 @@ namespace DentalInformationSystem.Controllers
                 }).ToList();
 
             ViewData["PatientID"] = new SelectList(patients, "PatientID", "FullName");
+
+            // //diagnoses
+            // var diagnoses = _context.Diagnoses
+            //.Select(d => new
+            //{
+            //    d.DiagnosisID,
+            //    DiagnoseBothNames = d.DiagnosisNameSrb + " | " + d.DiagnosisNameLatin
+
+            //}).ToList();
+
+            // ViewData["DiagnosisID"] = new SelectList(diagnoses, "DiagnosisID", "DiagnoseBothNames");
+
+            ViewBag.Dijagnoza = _context.Diagnoses.ToList();
+
+
             return View();
 
         }
@@ -70,8 +86,12 @@ namespace DentalInformationSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProtocolID,PatientID,Date,Anamnesis,Diagnosis,Therapy,Signet")] Protocol protocol)
+        public async Task<IActionResult> Create([Bind("ProtocolID,PatientID,Date,Anamnesis,DiagnosisID,Therapy,Signet")] Protocol protocol, string Dijagnoza)
         {
+            
+
+
+
             var PatientInDb = _context.Patients.Single(p => p.PatientID == protocol.PatientID);
             protocol.Name = PatientInDb.Name;
             protocol.Surname = PatientInDb.Surname;
@@ -79,6 +99,11 @@ namespace DentalInformationSystem.Controllers
             protocol.Address = PatientInDb.Address;
             protocol.City = PatientInDb.City;
             protocol.YearOfBirth = PatientInDb.YearOfBirth;
+
+            var DijagnozaIme = _context.Diagnoses.Single(d => d.DiagnosisNameSrb == Dijagnoza);
+
+
+            protocol.DiagnosisID = DijagnozaIme.DiagnosisID;
 
             _context.Add(protocol);
             await _context.SaveChangesAsync();
@@ -102,15 +127,32 @@ namespace DentalInformationSystem.Controllers
             {
                 return NotFound();
             }
-             var patients = _context.Patients
-            .Select(p => new
-            {
-                p.PatientID,
-                FullName = p.Name + " " + p.Surname
+            var patients = _context.Patients
+           .Select(p => new
+           {
+               p.PatientID,
+               FullName = p.Name + " " + p.Surname
 
-            }).ToList();
+           }).ToList();
 
             ViewData["PatientID"] = new SelectList(patients, "PatientID", "FullName", protocol.PatientID);
+
+            //var diagnoses = _context.Diagnoses
+            //    .Select(d => new
+            //    {
+            //       d.DiagnosisID,
+            //       DiagnoseBothNames = d.DiagnosisNameSrb + " | " + d.DiagnosisNameLatin
+
+            //    }).ToList();
+
+
+            ViewBag.Dijagnoza = _context.Diagnoses.ToList();
+
+            
+
+            //ViewData["DiagnosisID"] = new SelectList(diagnoses, "DiagnosisID", "DiagnoseBothNames",protocol.DiagnosisID);
+
+
             return View(protocol);
         }
 
@@ -119,12 +161,13 @@ namespace DentalInformationSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProtocolID,PatientID,Date,Anamnesis,Diagnosis,Therapy,Signet")] Protocol protocol)
+        public async Task<IActionResult> Edit(int id, [Bind("ProtocolID,PatientID,Date,Anamnesis,DiagnosisID,Therapy,Signet")] Protocol protocol, string Dijagnoza)
         {
             if (id != protocol.ProtocolID)
             {
                 return NotFound();
             }
+            
 
             var PatientInDb = _context.Patients.Single(p => p.PatientID == protocol.PatientID);
             protocol.Name = PatientInDb.Name;
@@ -133,6 +176,10 @@ namespace DentalInformationSystem.Controllers
             protocol.Address = PatientInDb.Address;
             protocol.City = PatientInDb.City;
             protocol.YearOfBirth = PatientInDb.YearOfBirth;
+
+            var DijagnozaIme = _context.Diagnoses.Single(d => d.DiagnosisNameSrb == Dijagnoza);
+
+            protocol.DiagnosisID = DijagnozaIme.DiagnosisID;
 
             try
             {

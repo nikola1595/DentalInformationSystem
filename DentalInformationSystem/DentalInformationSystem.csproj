@@ -6,6 +6,27 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\Migrations\20200724141750_ChangeDiagnosisType.cs" />
+    <Compile Remove="Data\Migrations\20200724141750_ChangeDiagnosisType.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200724142320_ChangeDataTypeDiagnosis.cs" />
+    <Compile Remove="Data\Migrations\20200724142320_ChangeDataTypeDiagnosis.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200724143302_DiagnosisModel.cs" />
+    <Compile Remove="Data\Migrations\20200724143302_DiagnosisModel.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200724143535_test.cs" />
+    <Compile Remove="Data\Migrations\20200724143535_test.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200724144252_AddDiagnosesTest.cs" />
+    <Compile Remove="Data\Migrations\20200724144252_AddDiagnosesTest.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200724144601_AddDiagnoses.cs" />
+    <Compile Remove="Data\Migrations\20200724144601_AddDiagnoses.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200724145100_AddDiagnoses.cs" />
+    <Compile Remove="Data\Migrations\20200724145100_AddDiagnoses.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200724145910_ProtocolDiagnosis.cs" />
+    <Compile Remove="Data\Migrations\20200724145910_ProtocolDiagnosis.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200724150439_test.cs" />
+    <Compile Remove="Data\Migrations\20200724150439_test.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.6" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.6" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.6" />

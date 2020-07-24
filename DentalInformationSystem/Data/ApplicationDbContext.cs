@@ -17,5 +17,8 @@ namespace DentalInformationSystem.Data
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Protocol> Protocols { get; set; }
 
+        public DbSet<Diagnosis> Diagnoses { get; set; }
+
+
     }
 }
