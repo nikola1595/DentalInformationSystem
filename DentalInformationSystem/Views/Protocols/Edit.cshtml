@@ -1,0 +1,89 @@
+﻿@model DentalInformationSystem.Models.Protocol
+
+@{
+    ViewData["Title"] = "Izmena podataka";
+}
+
+<h1>Izmena podataka</h1>
+
+<h4>Protokol</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ProtocolID" />
+            <div class="form-group">
+                <label asp-for="PatientID" class="control-label"></label>
+                <select asp-for="PatientID" class="form-control" id="PatientID" asp-items="@ViewBag.PatientID"></select>
+                <span asp-validation-for="PatientID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Surname" class="control-label"></label>
+                <input asp-for="Surname" class="form-control" />
+                <span asp-validation-for="Surname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NameOfOneParent" class="control-label"></label>
+                <input asp-for="NameOfOneParent" class="form-control" />
+                <span asp-validation-for="NameOfOneParent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="YearOfBirth" class="control-label"></label>
+                <input asp-for="YearOfBirth" class="form-control" />
+                <span asp-validation-for="YearOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Anamnesis" class="control-label"></label>
+                <input asp-for="Anamnesis" class="form-control" />
+                <span asp-validation-for="Anamnesis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Diagnosis" class="control-label"></label>
+                <input asp-for="Diagnosis" class="form-control" />
+                <span asp-validation-for="Diagnosis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Therapy" class="control-label"></label>
+                <input asp-for="Therapy" class="form-control" />
+                <span asp-validation-for="Therapy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Signet" class="control-label"></label>
+                <input asp-for="Signet" class="form-control" />
+                <span asp-validation-for="Signet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Sačuvaj izmene" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Nazad na protokol", "Index", "Protocols", null, new { @class = "btn btn-secondary" })
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

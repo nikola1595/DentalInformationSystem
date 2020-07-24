@@ -57,7 +57,8 @@ namespace DentalInformationSystem.Data.Migrations
                         .HasMaxLength(30);
 
                     b.Property<int>("YearOfBirth")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasMaxLength(4);
 
                     b.HasKey("PatientID");
 

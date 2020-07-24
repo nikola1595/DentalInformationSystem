@@ -1,0 +1,102 @@
+﻿@model IEnumerable<DentalInformationSystem.Models.Protocol>
+
+@{
+    ViewData["Title"] = "Protokol";
+}
+
+<h1>Protokol</h1>
+
+<p>
+    @Html.ActionLink("Dodaj novog pacijenta u protokol", "Create", "Protocols", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProtocolID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Surname)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.NameOfOneParent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YearOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Anamnesis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diagnosis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Therapy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Signet)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProtocolID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+                @*<td>
+                @Html.DisplayFor(modelItem => item.NameOfOneParent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YearOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+                </td>*@
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Anamnesis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diagnosis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Therapy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Signet)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ProtocolID">Izmeni</a> |
+                <a asp-action="Details" asp-route-id="@item.ProtocolID">Detalji</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProtocolID">Obriši</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

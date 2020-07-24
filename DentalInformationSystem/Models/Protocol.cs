@@ -8,10 +8,11 @@ namespace DentalInformationSystem.Models
 {
     public class Protocol
     {
+        [Display(Name="Redni broj")]
         public int ProtocolID { get; set; }
         public Patient Patient { get; set; }
         public int PatientID { get; set; }
-        [Required, Display(Name = "Datum"), DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{dddd, dd MMMM yyyy}")]
+        [Required, DataType(DataType.Date), Display(Name = "Datum")]
         public DateTime Date { get; set; }
 
         [Required, Display(Name = "Ime"), StringLength(25)]
