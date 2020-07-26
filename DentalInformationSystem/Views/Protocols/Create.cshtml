@@ -55,11 +55,18 @@
             <select asp-for="DiagnosisID" class="form-control" id="DiagnosisID" asp-items="@ViewBag.DiagnosisID"></select>
             <span asp-validation-for="DiagnosisID" class="text-danger"></span>
         </div>*@
+
             <div class="form-group">
-                <label asp-for="Therapy" class="control-label"></label>
-                <input asp-for="Therapy" class="form-control" />
-                <span asp-validation-for="Therapy" class="text-danger"></span>
+                <label>Izaberite terapiju</label>
+                <input type="search" list="data3" placeholder="Unesite terapiju" id="searchid" name="Terapija" class="form-control" />
+                <datalist id="data3">
+                    @foreach (var item in ViewBag.Terapija)
+                    {
+                        <option value="@item.TherapyName"></option>
+                    }
+                </datalist>
             </div>
+
             <div class="form-group">
                 <label asp-for="Signet" class="control-label"></label>
                 <input asp-for="Signet" class="form-control" />

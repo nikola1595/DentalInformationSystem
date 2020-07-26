@@ -4,9 +4,7 @@
     ViewData["Title"] = "Izmena podataka";
 }
 
-<h1>Pacijent: @*@Model.Name @Model.Surname*@</h1>
-
-<h4>Protokol</h4>
+<h4>Izmena podataka za određenog pacijenta u protokolu</h4>
 <hr />
 
 <div class="row">
@@ -16,10 +14,10 @@
             <input type="hidden" asp-for="ProtocolID" />
             <input type="hidden" asp-for="PatientID" />
             @*<div class="form-group">
-                <label asp-for="PatientID" class="control-label">Izaberite pacijenta</label>
-                <select asp-for="PatientID" class="form-control" id="PatientID" asp-items="@ViewBag.PatientID"></select>
+            <label asp-for="PatientID" class="control-label">Izaberite pacijenta</label>
+            <select asp-for="PatientID" class="form-control" id="PatientID" asp-items="@ViewBag.PatientID"></select>
 
-            </div>*@
+        </div>*@
             @*<div class="form-group">
             <label>Izaberite pacijenta</label>
             <input type="search" list="data2" placeholder="@Model.Patient.Name @Model.Patient.Surname" id="searchid" name="Pacijent" class="form-control" />
@@ -35,36 +33,7 @@
                 <input asp-for="Date" class="form-control" />
                 <span asp-validation-for="Date" class="text-danger"></span>
             </div>
-            @*<div class="form-group">
-            <label asp-for="Name" class="control-label"></label>
-            <input asp-for="Name" class="form-control" />
-            <span asp-validation-for="Name" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Surname" class="control-label"></label>
-            <input asp-for="Surname" class="form-control" />
-            <span asp-validation-for="Surname" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="NameOfOneParent" class="control-label"></label>
-            <input asp-for="NameOfOneParent" class="form-control" />
-            <span asp-validation-for="NameOfOneParent" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="YearOfBirth" class="control-label"></label>
-            <input asp-for="YearOfBirth" class="form-control" />
-            <span asp-validation-for="YearOfBirth" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Address" class="control-label"></label>
-            <input asp-for="Address" class="form-control" />
-            <span asp-validation-for="Address" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="City" class="control-label"></label>
-            <input asp-for="City" class="form-control" />
-            <span asp-validation-for="City" class="text-danger"></span>
-        </div>*@
+
             <div class="form-group">
                 <label asp-for="Anamnesis" class="control-label"></label>
                 <input asp-for="Anamnesis" class="form-control" />
@@ -72,11 +41,11 @@
             </div>
             <div class="form-group">
                 <label>Izaberite dijagnozu</label>
-                <input type="search" list="data1" placeholder="@Model.Diagnosis.DiagnosisNameSrb"value="@Model.Diagnosis.DiagnosisNameSrb" id="searchid" name="Dijagnoza" class="form-control" />
+                <input type="search" list="data1" placeholder="@Model.Diagnosis.DiagnosisNameSrb" value="@Model.Diagnosis.DiagnosisNameSrb" id="searchid" name="Dijagnoza" class="form-control" />
                 <datalist id="data1">
                     @foreach (var item in ViewBag.Dijagnoza)
                     {
-                    <option value="@item.DiagnosisNameSrb">@item.DiagnosisNameSrb | @item.DiagnosisNameLatin</option>
+                        <option value="@item.DiagnosisNameSrb">@item.DiagnosisNameSrb | @item.DiagnosisNameLatin</option>
                     }
                 </datalist>
             </div>
@@ -85,11 +54,18 @@
             <select asp-for="DiagnosisID" class="form-control" id="DiagnosisID" asp-items="@ViewBag.DiagnosisID"></select>
             <span asp-validation-for="DiagnosisID" class="text-danger"></span>
         </div>*@
-            <div class="form-group">
-                <label asp-for="Therapy" class="control-label"></label>
-                <input asp-for="Therapy" class="form-control" />
-                <span asp-validation-for="Therapy" class="text-danger"></span>
-            </div>
+        <div class="form-group">
+            <label>Izaberite terapiju</label>
+            <input type="search" list="data3" placeholder="@Model.Therapy.TherapyName" value="@Model.Therapy.TherapyName" id="searchid" name="Terapija" class="form-control" />
+            <datalist id="data3">
+                @foreach (var item in ViewBag.Terapija)
+                {
+                    <option value="@item.TherapyName"></option>
+                }
+                
+            </datalist>
+            
+        </div>
             <div class="form-group">
                 <label asp-for="Signet" class="control-label"></label>
                 <input asp-for="Signet" class="form-control" />

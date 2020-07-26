@@ -24,6 +24,26 @@
     <Compile Remove="Data\Migrations\20200724145910_ProtocolDiagnosis.Designer.cs" />
     <Compile Remove="Data\Migrations\20200724150439_test.cs" />
     <Compile Remove="Data\Migrations\20200724150439_test.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200726134209_FKTherapy.cs" />
+    <Compile Remove="Data\Migrations\20200726134209_FKTherapy.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200726142435_ForeignKTherapy.cs" />
+    <Compile Remove="Data\Migrations\20200726142435_ForeignKTherapy.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200726161112_AddTherapies.cs" />
+    <Compile Remove="Data\Migrations\20200726161112_AddTherapies.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200726171600_AddTherapyModel.cs" />
+    <Compile Remove="Data\Migrations\20200726171600_AddTherapyModel.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200726171757_AddTherapyModel.cs" />
+    <Compile Remove="Data\Migrations\20200726171757_AddTherapyModel.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200726172134_AddTherapyModel.cs" />
+    <Compile Remove="Data\Migrations\20200726172134_AddTherapyModel.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200726172822_DropTableT.cs" />
+    <Compile Remove="Data\Migrations\20200726172822_DropTableT.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200726173038_AddTherapyProtocol.cs" />
+    <Compile Remove="Data\Migrations\20200726173038_AddTherapyProtocol.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200726173402_AddTherapyProtocol.cs" />
+    <Compile Remove="Data\Migrations\20200726173402_AddTherapyProtocol.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200726174135_AddTherapyProtocol.cs" />
+    <Compile Remove="Data\Migrations\20200726174135_AddTherapyProtocol.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

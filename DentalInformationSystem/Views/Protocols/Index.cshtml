@@ -24,18 +24,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Patient.Surname)
             </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.Patient.NameOfOneParent)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Patient.YearOfBirth)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Patient.Address)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Patient.City)
-            </th>*@
+
             <th>
                 @Html.DisplayNameFor(model => model.Anamnesis)
             </th>
@@ -43,7 +32,7 @@
                 @Html.DisplayNameFor(model => model.DiagnosisID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Therapy)
+                @Html.DisplayNameFor(model => model.Therapy.TherapyName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Signet)
@@ -66,18 +55,6 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Patient.Surname)
             </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.Patient.NameOfOneParent)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Patient.YearOfBirth)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Patient.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Patient.City)
-            </td>*@
 
             <td>
                 @Html.DisplayFor(modelItem => item.Anamnesis)
@@ -86,7 +63,7 @@
                 @Html.DisplayFor(modelItem => item.Diagnosis.DiagnosisNameLatin)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Therapy)
+                @Html.DisplayFor(modelItem => item.Therapy.TherapyName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Signet)

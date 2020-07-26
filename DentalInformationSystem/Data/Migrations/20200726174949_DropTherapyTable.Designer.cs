@@ -4,14 +4,16 @@ using DentalInformationSystem.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DentalInformationSystem.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200726174949_DropTherapyTable")]
+    partial class DropTherapyTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -115,37 +117,13 @@ namespace DentalInformationSystem.Data.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<int>("TherapyID")
-                        .HasColumnType("int");
-
                     b.HasKey("ProtocolID");
 
                     b.HasIndex("DiagnosisID");
 
                     b.HasIndex("PatientID");
 
-                    b.HasIndex("TherapyID");
-
                     b.ToTable("Protocols");
-                });
-
-            modelBuilder.Entity("DentalInformationSystem.Models.Therapy", b =>
-                {
-                    b.Property<int>("TherapyID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("TherapyName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("TherapyID");
-
-                    b.ToTable("Therapies");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -359,12 +337,6 @@ namespace DentalInformationSystem.Data.Migrations
                     b.HasOne("DentalInformationSystem.Models.Patient", "Patient")
                         .WithMany()
                         .HasForeignKey("PatientID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DentalInformationSystem.Models.Therapy", "Therapy")
-                        .WithMany()
-                        .HasForeignKey("TherapyID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
