@@ -11,22 +11,24 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            @*<div class="form-group">
+            <div class="form-group">
                 <label>Izaberite pacijenta</label>
-                <input type="search" list="data2" placeholder="@Model.Patient.Name @Model.Patient.Surname" id="searchid" name="Pacijent" class="form-control" />
+                <input type="search" list="data2" placeholder="unesite pacijenta" id="searchid" name="Pacijent" class="form-control" />
                 <datalist id="data2">
                     @foreach (var item in ViewBag.Pacijent)
                     {
-                        <option value="@item.Name @item.Surname"></option>
+                        <option value="@item.Surname">@item.Name @item.Surname</option>
                     }
                 </datalist>
-            </div>*@
-            <div class="form-group">
+            </div>
+
+
+
+            @*<div class="form-group">
             <label asp-for="PatientID" class="control-label">Izaberite pacijenta</label>
             <select asp-for="PatientID" class="form-control" id="PatientID" asp-items="@ViewBag.PatientID"></select>
 
-            </div>
+        </div>*@
             <div class="form-group">
                 <label asp-for="Date" class="control-label"></label>
                 <input asp-for="Date" class="form-control" />
@@ -43,7 +45,7 @@
                 <datalist id="data1">
                     @foreach (var item in ViewBag.Dijagnoza)
                     {
-                        <option value="@item.DiagnosisNameSrb"></option>
+                        <option value="@item.DiagnosisNameSrb">@item.DiagnosisCode | @item.DiagnosisNameSrb | @item.DiagnosisNameLatin</option>
                     }
                 </datalist>
             </div>

@@ -55,7 +55,7 @@ namespace DentalInformationSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("DiagnosisID,DiagnosisNameSrb,DiagnosisNameLatin")] Diagnosis diagnosis)
+        public async Task<IActionResult> Create([Bind("DiagnosisID,DiagnosisCode,DiagnosisNameSrb,DiagnosisNameLatin")] Diagnosis diagnosis)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace DentalInformationSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("DiagnosisID,DiagnosisNameSrb,DiagnosisNameLatin")] Diagnosis diagnosis)
+        public async Task<IActionResult> Edit(int id, [Bind("DiagnosisID,DiagnosisCode,DiagnosisNameSrb,DiagnosisNameLatin")] Diagnosis diagnosis)
         {
             if (id != diagnosis.DiagnosisID)
             {

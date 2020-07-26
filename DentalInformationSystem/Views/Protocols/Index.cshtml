@@ -19,22 +19,22 @@
                 @Html.DisplayNameFor(model => model.Date)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.Patient.Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Surname)
+                @Html.DisplayNameFor(model => model.Patient.Surname)
             </th>
             @*<th>
-                @Html.DisplayNameFor(model => model.NameOfOneParent)
+                @Html.DisplayNameFor(model => model.Patient.NameOfOneParent)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.YearOfBirth)
+                @Html.DisplayNameFor(model => model.Patient.YearOfBirth)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Address)
+                @Html.DisplayNameFor(model => model.Patient.Address)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.City)
+                @Html.DisplayNameFor(model => model.Patient.City)
             </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Anamnesis)
@@ -61,23 +61,23 @@
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.Patient.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Surname)
+                @Html.DisplayFor(modelItem => item.Patient.Surname)
             </td>
-                @*<td>
-                @Html.DisplayFor(modelItem => item.NameOfOneParent)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.YearOfBirth)
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Patient.NameOfOneParent)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Address)
+                @Html.DisplayFor(modelItem => item.Patient.YearOfBirth)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.City)
-                </td>*@
+                @Html.DisplayFor(modelItem => item.Patient.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient.City)
+            </td>*@
 
             <td>
                 @Html.DisplayFor(modelItem => item.Anamnesis)

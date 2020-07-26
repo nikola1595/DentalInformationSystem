@@ -4,7 +4,7 @@
     ViewData["Title"] = "Izmena podataka";
 }
 
-<h1>Izmena podataka</h1>
+<h1>Pacijent: @*@Model.Name @Model.Surname*@</h1>
 
 <h4>Protokol</h4>
 <hr />
@@ -72,11 +72,11 @@
             </div>
             <div class="form-group">
                 <label>Izaberite dijagnozu</label>
-                <input type="search" list="data1" placeholder="@Model.Diagnosis.DiagnosisNameSrb" id="searchid" name="Dijagnoza" class="form-control" />
+                <input type="search" list="data1" placeholder="@Model.Diagnosis.DiagnosisNameSrb"value="@Model.Diagnosis.DiagnosisNameSrb" id="searchid" name="Dijagnoza" class="form-control" />
                 <datalist id="data1">
                     @foreach (var item in ViewBag.Dijagnoza)
                     {
-                        <option value="@item.DiagnosisNameSrb"></option>
+                    <option value="@item.DiagnosisNameSrb">@item.DiagnosisNameSrb | @item.DiagnosisNameLatin</option>
                     }
                 </datalist>
             </div>

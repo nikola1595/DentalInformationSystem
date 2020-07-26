@@ -25,6 +25,7 @@ namespace DentalInformationSystem.Controllers
         {
             var applicationDbContext = _context.Protocols.Include(p => p.Patient).Include(d => d.Diagnosis);
             return View(await applicationDbContext.ToListAsync());
+
         }
 
 
@@ -76,6 +77,8 @@ namespace DentalInformationSystem.Controllers
 
             ViewBag.Dijagnoza = _context.Diagnoses.ToList();
 
+            ViewBag.Pacijent = _context.Patients.ToList();
+
 
             return View();
 
@@ -86,22 +89,22 @@ namespace DentalInformationSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProtocolID,PatientID,Date,Anamnesis,DiagnosisID,Therapy,Signet")] Protocol protocol, string Dijagnoza)
+        public async Task<IActionResult> Create([Bind("ProtocolID,PatientID,Date,Anamnesis,DiagnosisID,Therapy,Signet")] Protocol protocol, string Dijagnoza,string Pacijent)
         {
-            
 
-
-
-            var PatientInDb = _context.Patients.Single(p => p.PatientID == protocol.PatientID);
-            protocol.Name = PatientInDb.Name;
-            protocol.Surname = PatientInDb.Surname;
-            protocol.NameOfOneParent = PatientInDb.NameOfOneParent;
-            protocol.Address = PatientInDb.Address;
-            protocol.City = PatientInDb.City;
-            protocol.YearOfBirth = PatientInDb.YearOfBirth;
+            //var PatientInDb = _context.Patients.Single(p => p.PatientID == protocol.PatientID);
+            //protocol.Name = PatientInDb.Name;
+            //protocol.Surname = PatientInDb.Surname;
+            //protocol.NameOfOneParent = PatientInDb.NameOfOneParent;
+            //protocol.Address = PatientInDb.Address;
+            //protocol.City = PatientInDb.City;
+            //protocol.YearOfBirth = PatientInDb.YearOfBirth;
 
             var DijagnozaIme = _context.Diagnoses.Single(d => d.DiagnosisNameSrb == Dijagnoza);
 
+            var PacijentIme = _context.Patients.Single(p => p.Surname == Pacijent);
+
+            protocol.PatientID = PacijentIme.PatientID;
 
             protocol.DiagnosisID = DijagnozaIme.DiagnosisID;
 
@@ -123,6 +126,8 @@ namespace DentalInformationSystem.Controllers
             }
 
             var protocol = await _context.Protocols.FindAsync(id);
+            
+            
             if (protocol == null)
             {
                 return NotFound();
@@ -169,13 +174,13 @@ namespace DentalInformationSystem.Controllers
             }
             
 
-            var PatientInDb = _context.Patients.Single(p => p.PatientID == protocol.PatientID);
-            protocol.Name = PatientInDb.Name;
-            protocol.Surname = PatientInDb.Surname;
-            protocol.NameOfOneParent = PatientInDb.NameOfOneParent;
-            protocol.Address = PatientInDb.Address;
-            protocol.City = PatientInDb.City;
-            protocol.YearOfBirth = PatientInDb.YearOfBirth;
+            //var PatientInDb = _context.Patients.Single(p => p.PatientID == protocol.PatientID);
+            //protocol.Name = PatientInDb.Name;
+            //protocol.Surname = PatientInDb.Surname;
+            //protocol.NameOfOneParent = PatientInDb.NameOfOneParent;
+            //protocol.Address = PatientInDb.Address;
+            //protocol.City = PatientInDb.City;
+            //protocol.YearOfBirth = PatientInDb.YearOfBirth;
 
             var DijagnozaIme = _context.Diagnoses.Single(d => d.DiagnosisNameSrb == Dijagnoza);
 
