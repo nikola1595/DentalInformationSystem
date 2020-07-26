@@ -35,10 +35,20 @@
                 <span asp-validation-for="Date" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Anamnesis" class="control-label"></label>
-                <input asp-for="Anamnesis" class="form-control" />
-                <span asp-validation-for="Anamnesis" class="text-danger"></span>
+                <label>Izaberite anamnezu</label>
+                <input type="search" list="data4" placeholder="unesi anamnezu" id="searchid" name="Anamneza" class="form-control" />
+                <datalist id="data4">
+                    @foreach (var item in ViewBag.Anamneza)
+                    {
+                        <option value="@item.AnamnesisName"></option>
+                    }
+                </datalist>
             </div>
+            @*<div class="form-group">
+            <label asp-for="Anamnesis" class="control-label"></label>
+            <input asp-for="Anamnesis" class="form-control" />
+            <span asp-validation-for="Anamnesis" class="text-danger"></span>
+        </div>*@
             <div class="form-group">
                 <label>Izaberite dijagnozu</label>
                 <input type="search" list="data1" placeholder="unesi dijagnozu" id="searchid" name="Dijagnoza" class="form-control" />

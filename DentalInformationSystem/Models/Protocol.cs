@@ -17,7 +17,9 @@ namespace DentalInformationSystem.Models
         public DateTime Date { get; set; }
 
         [Required, Display(Name="Anamneza"),MaxLength(255)]
-        public string Anamnesis { get; set; }
+        public Anamnesis Anamnesis { get; set; }
+        [Display(Name ="Anamneza")]
+        public int AnamnesisID { get; set; }
         public Diagnosis Diagnosis { get; set; }
         [Required, Display(Name = "Dijagnoza")]
         public int DiagnosisID { get; set; }

@@ -21,6 +21,7 @@ namespace DentalInformationSystem.Data
 
         public DbSet<Therapy> Therapies { get; set; }
 
+        public DbSet<Anamnesis> Anamneses { get; set; }
 
     }
 }

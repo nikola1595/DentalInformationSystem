@@ -23,7 +23,10 @@ namespace DentalInformationSystem.Controllers
         // GET: Protocols
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Protocols.Include(p => p.Patient).Include(d => d.Diagnosis).Include(t => t.Therapy);
+            var applicationDbContext = _context.Protocols.Include(p => p.Patient)
+                .Include(d => d.Diagnosis)
+                .Include(t => t.Therapy)
+                .Include(a => a.Anamnesis);
             return View(await applicationDbContext.ToListAsync());
 
         }
@@ -40,7 +43,10 @@ namespace DentalInformationSystem.Controllers
             }
 
             var protocol = await _context.Protocols
-                .Include(p => p.Patient).Include(d => d.Diagnosis).Include(t => t.Therapy)
+                .Include(p => p.Patient)
+                .Include(d => d.Diagnosis)
+                .Include(t => t.Therapy)
+                .Include(a => a.Anamnesis)
                 .FirstOrDefaultAsync(m => m.ProtocolID == id);
             if (protocol == null)
             {
@@ -81,6 +87,8 @@ namespace DentalInformationSystem.Controllers
 
             ViewBag.Terapija = _context.Therapies.ToList();
 
+            ViewBag.Anamneza = _context.Anamneses.ToList();
+
             return View();
 
         }
@@ -90,7 +98,7 @@ namespace DentalInformationSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProtocolID,PatientID,Date,Anamnesis,DiagnosisID,TherapyID,Signet")] Protocol protocol, string Dijagnoza,string Pacijent,string Terapija)
+        public async Task<IActionResult> Create([Bind("ProtocolID,PatientID,Date,AnamnesisID,DiagnosisID,TherapyID,Signet")] Protocol protocol, string Dijagnoza,string Pacijent,string Terapija, string Anamneza)
         {
 
 
@@ -99,6 +107,10 @@ namespace DentalInformationSystem.Controllers
             var PacijentIme = _context.Patients.Single(p => p.Surname == Pacijent);
 
             var TerapijaIme = _context.Therapies.Single(t => t.TherapyName == Terapija);
+
+            var AnamnezaIme = _context.Anamneses.Single(a => a.AnamnesisName == Anamneza);
+
+            protocol.AnamnesisID = AnamnezaIme.AnamnesisID;
 
             protocol.PatientID = PacijentIme.PatientID;
 
@@ -153,6 +165,8 @@ namespace DentalInformationSystem.Controllers
 
             ViewBag.Terapija = _context.Therapies.ToList();
 
+            ViewBag.Anamneza = _context.Anamneses.ToList();
+
             //ViewData["DiagnosisID"] = new SelectList(diagnoses, "DiagnosisID", "DiagnoseBothNames",protocol.DiagnosisID);
 
 
@@ -164,7 +178,7 @@ namespace DentalInformationSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProtocolID,PatientID,Date,Anamnesis,DiagnosisID,TherapyID,Signet")] Protocol protocol, string Dijagnoza, string Terapija)
+        public async Task<IActionResult> Edit(int id, [Bind("ProtocolID,PatientID,Date,AnamnesisID,DiagnosisID,TherapyID,Signet")] Protocol protocol, string Dijagnoza, string Terapija, string Anamneza)
         {
             if (id != protocol.ProtocolID)
             {
@@ -177,8 +191,12 @@ namespace DentalInformationSystem.Controllers
 
             var TerapijaIme = _context.Therapies.Single(t => t.TherapyName == Terapija);
 
+            var AnamnezaIme = _context.Anamneses.Single(a => a.AnamnesisName == Anamneza);
+
             protocol.TherapyID = TerapijaIme.TherapyID;
             protocol.DiagnosisID = DijagnozaIme.DiagnosisID;
+
+            protocol.AnamnesisID = AnamnezaIme.AnamnesisID;
 
             try
             {
@@ -215,7 +233,10 @@ namespace DentalInformationSystem.Controllers
             }
 
             var protocol = await _context.Protocols
-                .Include(p => p.Patient).Include(d => d.Diagnosis).Include(t => t.Therapy)
+                .Include(p => p.Patient)
+                .Include(d => d.Diagnosis)
+                .Include(t => t.Therapy)
+                .Include(a => a.Anamnesis)
                 .FirstOrDefaultAsync(m => m.ProtocolID == id);
             if (protocol == null)
             {
