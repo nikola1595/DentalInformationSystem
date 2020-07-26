@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<DentalInformationSystem.Models.Therapy>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Cenovnik";
 }
 
 <h1>Cenovnik</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Unesi novu stavku u cenovnik</a>
 </p>
 <table class="table">
     <thead>
@@ -34,7 +34,7 @@
                 @Html.DisplayFor(modelItem => item.TherapyName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Price)
+                @Html.DisplayFor(modelItem => item.Price) din
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.TherapyID">Izmeni</a> |

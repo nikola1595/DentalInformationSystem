@@ -24,9 +24,11 @@
             <th>
                 @Html.DisplayNameFor(model => model.Patient.Surname)
             </th>
-
             <th>
                 @Html.DisplayNameFor(model => model.Anamnesis.AnamnesisName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diagnosis.DiagnosisCode)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DiagnosisID)
@@ -58,6 +60,9 @@
 
             <td>
                 @Html.DisplayFor(modelItem => item.Anamnesis.AnamnesisName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diagnosis.DiagnosisCode)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Diagnosis.DiagnosisNameLatin)
