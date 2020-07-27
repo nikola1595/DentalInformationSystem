@@ -261,5 +261,7 @@ namespace DentalInformationSystem.Controllers
         {
             return _context.Protocols.Any(e => e.ProtocolID == id);
         }
+
+
     }
 }

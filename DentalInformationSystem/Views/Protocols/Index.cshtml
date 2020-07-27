@@ -9,76 +9,95 @@
 <p>
     @Html.ActionLink("Dodaj novog pacijenta u protokol", "Create", "Protocols", null, new { @class = "btn btn-primary" })
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ProtocolID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Patient.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Patient.Surname)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Anamnesis.AnamnesisName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Diagnosis.DiagnosisCode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DiagnosisID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Therapy.TherapyName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Signet)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProtocolID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Patient.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Patient.Surname)
-            </td>
+<div class="container">
+    <table class=" cell-border table-bordered table-hover" id="tblProtocol">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProtocolID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Patient.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Patient.Surname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Anamnesis.AnamnesisName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Diagnosis.DiagnosisCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DiagnosisID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Therapy.TherapyName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Signet)
+                </th>
+                <th>Opcije</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProtocolID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Patient.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Patient.Surname)
+                        </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Anamnesis.AnamnesisName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Diagnosis.DiagnosisCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Diagnosis.DiagnosisNameLatin)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Therapy.TherapyName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Signet)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ProtocolID">Izmeni</a> |
-                <a asp-action="Details" asp-route-id="@item.ProtocolID">Detalji</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProtocolID">Obriši</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Anamnesis.AnamnesisName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Diagnosis.DiagnosisCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Diagnosis.DiagnosisNameLatin)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Therapy.TherapyName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Signet)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.ProtocolID">Izmeni</a> |
+                            <a asp-action="Details" asp-route-id="@item.ProtocolID">Detalji</a> |
+                            <a asp-action="Delete" asp-route-id="@item.ProtocolID">Obriši</a>
+                        </td>
+                    </tr>
+                }
+
+
+        </tbody>
+
+    </table>
+
+</div>
+@section Scripts{
+<script>
+    $(document).ready(function () {
+        $('#tblProtocol').dataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Serbian_latin.json"
+            }
+        });
+    });
+</script>
+ }
+

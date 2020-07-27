@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Dodaj novog pacijenta", "Create", "Patients", null, new { @class = "btn btn-primary" })
 </p>
-<table class="table table-bordered table-hover">
+<table class="cell-border table-bordered table-hover" id="tblPacijent">
     <thead>
         <tr>
             <th>
@@ -17,6 +17,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YearOfBirth)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.NameOfOneParent)
@@ -30,20 +33,22 @@
             <th>
                 @Html.DisplayNameFor(model => model.Telephone)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.YearOfBirth)
-            </th>
+
             <th>Opcije</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model)
+        {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YearOfBirth)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NameOfOneParent)
@@ -57,15 +62,26 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Telephone)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.YearOfBirth)
-            </td>
+
             <td>
                 <a asp-action="Edit" asp-route-id="@item.PatientID">Izmeni</a> |
                 <a asp-action="Details" asp-route-id="@item.PatientID">Detalji</a> |
                 <a asp-action="Delete" asp-route-id="@item.PatientID">Obriši</a>
             </td>
         </tr>
-}
+        }
     </tbody>
 </table>
+
+
+@section Scripts{
+    <script>
+    $(document).ready(function () {
+        $('#tblPacijent').dataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Serbian_latin.json"
+            }
+        });
+    });
+    </script>
+}

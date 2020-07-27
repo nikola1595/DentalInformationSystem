@@ -26,7 +26,7 @@ namespace DentalInformationSystem.Models
         public Therapy Therapy { get; set; }
         [Display(Name = "Terapija")]
         public int TherapyID { get; set; }
-        [Required, Display(Name = "Pecat"), MaxLength(255)]
+        [Required, Display(Name = "Pečat"), MaxLength(255)]
         public string Signet { get; set; }
 
 
