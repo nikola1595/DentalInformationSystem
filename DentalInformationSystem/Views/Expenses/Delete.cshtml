@@ -1,0 +1,45 @@
+﻿@model DentalInformationSystem.Models.Expense
+
+@{
+    ViewData["Title"] = "Brisanje";
+}
+
+<h1>Brisanje rashoda: @Model.ExpensesType.ExpensesTypeName</h1>
+
+<h3>Da li ste sigurni da želite da obrišete ovaj rashod?</h3>
+<div>
+
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ExpenseDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ExpenseDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ExpensesTypeID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ExpensesType.ExpensesTypeName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price) din
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ExpenseID" />
+        <input type="submit" value="Obriši stavku iz rashoda" class="btn btn-danger" />
+
+    </form>
+    <div>
+        <br />
+        @Html.ActionLink("Nazad na listu rashoda", "Index", "Expenses", null, new { @class = "btn btn-secondary" })
+    </div>
+     
+    
+</div>

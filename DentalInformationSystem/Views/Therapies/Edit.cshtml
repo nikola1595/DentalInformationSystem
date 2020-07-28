@@ -1,12 +1,12 @@
 ﻿@model DentalInformationSystem.Models.Therapy
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Izmeni stavku u cenovniku";
 }
 
-<h1>Edit</h1>
+    <h1>Izmena stavke u cenovniku</h1>
 
-<h4>Therapy</h4>
+<h4>@Model.TherapyName</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -24,15 +24,14 @@
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Sačuvaj" class="btn btn-primary" />
             </div>
+            @Html.ActionLink("Nazad na cenovnik", "Index", "Therapies", null, new { @class = "btn btn-secondary" })
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

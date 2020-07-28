@@ -58,10 +58,15 @@
     <form asp-action="Delete">
         <input type="hidden" asp-for="PatientID" />
         <input type="submit" value="Obriši podatke o pacijentu" class="btn btn-danger" />
-        
+
     </form>
-    
+    <div>
+        <br />
         @Html.ActionLink("Nazad na listu pacijenata", "Index", "Patients", null, new { @class = "btn btn-secondary" })
+    </div>
     
-    
+
+
+
+
 </div>

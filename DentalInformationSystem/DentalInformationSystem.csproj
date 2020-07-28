@@ -44,6 +44,10 @@
     <Compile Remove="Data\Migrations\20200726173402_AddTherapyProtocol.Designer.cs" />
     <Compile Remove="Data\Migrations\20200726174135_AddTherapyProtocol.cs" />
     <Compile Remove="Data\Migrations\20200726174135_AddTherapyProtocol.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200728150258_AddAnnotationPriceTypeNames.cs" />
+    <Compile Remove="Data\Migrations\20200728150258_AddAnnotationPriceTypeNames.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200728150626_AddAnnotationExpensesType.cs" />
+    <Compile Remove="Data\Migrations\20200728150626_AddAnnotationExpensesType.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

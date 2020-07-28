@@ -4,14 +4,16 @@ using DentalInformationSystem.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DentalInformationSystem.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200728143823_ModifyExpensesTypeModel")]
+    partial class ModifyExpensesTypeModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,29 +60,6 @@ namespace DentalInformationSystem.Data.Migrations
                     b.HasKey("DiagnosisID");
 
                     b.ToTable("Diagnoses");
-                });
-
-            modelBuilder.Entity("DentalInformationSystem.Models.Expense", b =>
-                {
-                    b.Property<int>("ExpenseID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("ExpenseDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("ExpensesTypeID")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("ExpenseID");
-
-                    b.HasIndex("ExpensesTypeID");
-
-                    b.ToTable("Expenses");
                 });
 
             modelBuilder.Entity("DentalInformationSystem.Models.ExpensesType", b =>
@@ -192,7 +171,7 @@ namespace DentalInformationSystem.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,0)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("TherapyName")
                         .IsRequired()
@@ -401,15 +380,6 @@ namespace DentalInformationSystem.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("DentalInformationSystem.Models.Expense", b =>
-                {
-                    b.HasOne("DentalInformationSystem.Models.ExpensesType", "ExpensesType")
-                        .WithMany()
-                        .HasForeignKey("ExpensesTypeID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("DentalInformationSystem.Models.Protocol", b =>

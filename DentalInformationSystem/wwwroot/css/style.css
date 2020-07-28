@@ -441,6 +441,7 @@ h3 {
   background: #009DFF;
   color: #fff !important;
   border: 1px solid #009DFF;
+  padding 10px;
 }
 
 /* line 21, ../../Arafath/CL/january 2020/241. Medical/HTML/scss/_btn.scss */
@@ -646,7 +647,7 @@ h3 {
 
 /* line 167, ../../Arafath/CL/january 2020/241. Medical/HTML/scss/_btn.scss */
 .boxed-btn2 {
-  background: transparent;
+  background: border-box;
   color: #fff;
   display: inline-block;
   padding: 18px 24px;
