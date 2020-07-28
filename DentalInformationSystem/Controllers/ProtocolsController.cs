@@ -62,13 +62,13 @@ namespace DentalInformationSystem.Controllers
             //patients
             var patients = _context.Patients
                 .Select(p => new
-                {
-                    p.PatientID,
-                    FullName = p.Name + " " + p.Surname
+                 {
+                     p.PatientID,
+                     FullName = p.Name + " " + p.Surname
 
-                }).ToList();
+                 }).ToList();
 
-            ViewData["PatientID"] = new SelectList(patients, "PatientID", "FullName");
+            // ViewData["Pacijent"] = new SelectList(patients, "PatientID", "FullName");
 
             // //diagnoses
             // var diagnoses = _context.Diagnoses
@@ -98,13 +98,13 @@ namespace DentalInformationSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProtocolID,PatientID,Date,AnamnesisID,DiagnosisID,TherapyID,Signet")] Protocol protocol, string Dijagnoza,string Pacijent,string Terapija, string Anamneza)
+        public async Task<IActionResult> Create([Bind("ProtocolID,PatientID,Date,AnamnesisID,DiagnosisID,TherapyID")] Protocol protocol, string Dijagnoza,string Pacijent,string Terapija, string Anamneza)
         {
 
 
             var DijagnozaIme = _context.Diagnoses.Single(d => d.DiagnosisNameSrb == Dijagnoza);
 
-            var PacijentIme = _context.Patients.Single(p => p.Surname == Pacijent);
+            var PacijentIme = _context.Patients.Single(p => p.Name + " " + p.Surname == Pacijent);
 
             var TerapijaIme = _context.Therapies.Single(t => t.TherapyName == Terapija);
 
@@ -117,6 +117,9 @@ namespace DentalInformationSystem.Controllers
             protocol.DiagnosisID = DijagnozaIme.DiagnosisID;
 
             protocol.TherapyID = TerapijaIme.TherapyID;
+
+            protocol.Signet = "Pacijentima dato obaveštenje o članu 11 zakona o pravima pacijenata";
+
 
             _context.Add(protocol);
             await _context.SaveChangesAsync();
@@ -178,7 +181,7 @@ namespace DentalInformationSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProtocolID,PatientID,Date,AnamnesisID,DiagnosisID,TherapyID,Signet")] Protocol protocol, string Dijagnoza, string Terapija, string Anamneza)
+        public async Task<IActionResult> Edit(int id, [Bind("ProtocolID,PatientID,Date,AnamnesisID,DiagnosisID,TherapyID")] Protocol protocol, string Dijagnoza, string Terapija, string Anamneza)
         {
             if (id != protocol.ProtocolID)
             {

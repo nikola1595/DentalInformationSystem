@@ -17,7 +17,7 @@
                 <datalist id="data2">
                     @foreach (var item in ViewBag.Pacijent)
                     {
-                        <option value="@item.Surname">@item.Name @item.Surname</option>
+                        <option value="@item.Name @item.Surname "></option>
                     }
                 </datalist>
             </div>
@@ -77,11 +77,11 @@
                 </datalist>
             </div>
 
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="Signet" class="control-label"></label>
                 <input asp-for="Signet" class="form-control" />
                 <span asp-validation-for="Signet" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
                 <input type="submit" value="Unesi u protokol" class="btn btn-primary" />
             </div>

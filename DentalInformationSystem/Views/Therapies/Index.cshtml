@@ -7,7 +7,7 @@
 <h1>Cenovnik</h1>
 
 <p>
-    <a asp-action="Create">Unesi novu stavku u cenovnik</a>
+    @Html.ActionLink("Unesi novu stavku u cenovnik", "Create", "Therapies", null, new { @class = "btn btn-primary" })
 </p>
 <table class="table">
     <thead>

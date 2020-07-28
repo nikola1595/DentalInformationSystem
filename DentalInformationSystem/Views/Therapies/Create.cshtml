@@ -23,14 +23,14 @@
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Unesi u cenovnik" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    @Html.ActionLink("Nazad na cenovnik", "Index", "Therapies", null, new { @class = "btn btn-secondary" })
 </div>
 
 @section Scripts {
