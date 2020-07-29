@@ -1,0 +1,65 @@
+﻿@model IEnumerable<DentalInformationSystem.Models.Supplier>
+
+@{
+    ViewData["Title"] = "Dobavljači";
+}
+
+<h1>Lista dobavljača</h1>
+
+<p>
+    @Html.ActionLink("Unesi novog dobavljača", "Create", "Suppliers", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SupplierName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telephone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PIB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupplierName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telephone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PIB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SupplierID">Izmeni</a> |
+                <a asp-action="Details" asp-route-id="@item.SupplierID">Detalji</a> |
+                <a asp-action="Delete" asp-route-id="@item.SupplierID">Obriši</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

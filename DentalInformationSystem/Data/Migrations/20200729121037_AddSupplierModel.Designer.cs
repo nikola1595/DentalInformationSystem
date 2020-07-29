@@ -4,14 +4,16 @@ using DentalInformationSystem.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DentalInformationSystem.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200729121037_AddSupplierModel")]
+    partial class AddSupplierModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -142,44 +144,6 @@ namespace DentalInformationSystem.Data.Migrations
                     b.HasKey("PatientID");
 
                     b.ToTable("Patients");
-                });
-
-            modelBuilder.Entity("DentalInformationSystem.Models.Procurement", b =>
-                {
-                    b.Property<int>("ProcurmentID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("DeliveryNoteNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MeasureUnit")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MerchandiseName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("ProcurmentDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SupplierID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TotalPrice")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProcurmentID");
-
-                    b.HasIndex("SupplierID");
-
-                    b.ToTable("Procurements");
                 });
 
             modelBuilder.Entity("DentalInformationSystem.Models.Protocol", b =>
@@ -478,15 +442,6 @@ namespace DentalInformationSystem.Data.Migrations
                     b.HasOne("DentalInformationSystem.Models.ExpensesType", "ExpensesType")
                         .WithMany()
                         .HasForeignKey("ExpensesTypeID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("DentalInformationSystem.Models.Procurement", b =>
-                {
-                    b.HasOne("DentalInformationSystem.Models.Supplier", "Supplier")
-                        .WithMany()
-                        .HasForeignKey("SupplierID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

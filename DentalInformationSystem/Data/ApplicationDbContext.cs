@@ -27,6 +27,10 @@ namespace DentalInformationSystem.Data
         
         public DbSet<Expense> Expenses { get; set; }
 
+        public DbSet<Supplier> Suppliers { get; set; }
+
+        public DbSet<Procurement> Procurements { get; set; }
+
 
 
     }

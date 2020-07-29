@@ -1,15 +1,16 @@
 ﻿@model IEnumerable<DentalInformationSystem.Models.Diagnosis>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Dijagnoze";
 }
 
-<h1>Index</h1>
+<h4>Lista dijagnoza</h4>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    @Html.ActionLink("Unos nove dijagnoze", "Create", "Diagnoses", null, new { @class = "btn btn-primary" })
 </p>
-<table class="table">
+
+<table class="table table-striped table-hover">
     <thead>
         <tr>
             <th>
@@ -37,9 +38,9 @@
                 @Html.DisplayFor(modelItem => item.DiagnosisNameLatin)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.DiagnosisID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.DiagnosisID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.DiagnosisID">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.DiagnosisID">Izmeni</a> |
+                <a asp-action="Details" asp-route-id="@item.DiagnosisID">Detalji</a> |
+                <a asp-action="Delete" asp-route-id="@item.DiagnosisID">Obriši</a>
             </td>
         </tr>
 }

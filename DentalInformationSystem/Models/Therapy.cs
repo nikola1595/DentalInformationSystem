@@ -11,7 +11,7 @@ namespace DentalInformationSystem.Models
     {
         [Display(Name = "Redni broj")]
         public int TherapyID { get; set; }
-        [Required, Display(Name = "Naziv terapije")]
+        [Required, Display(Name = "Naziv usluge")]
         public string TherapyName { get; set; }
         [Required, Display(Name = "Cena"),Column(TypeName = "decimal(18,0)")]
         public decimal Price { get; set; }

@@ -7,9 +7,9 @@
 <h1>Pregled anamneza </h1>
 
 <p>
-    <a asp-action="Create">Dodaj novu anamnezu</a>
+    @Html.ActionLink("Unos nove anamneze", "Create", "Anamneses", null, new { @class = "btn btn-primary" })
 </p>
-<table class="table">
+<table class="table table-striped table-hover">
     <thead>
         <tr>
             <th>
