@@ -50,6 +50,16 @@
     <Compile Remove="Data\Migrations\20200728150626_AddAnnotationExpensesType.Designer.cs" />
     <Compile Remove="Data\Migrations\20200729180432_RemoveDataTypeEmail.cs" />
     <Compile Remove="Data\Migrations\20200729180432_RemoveDataTypeEmail.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200730103541_ChangeDecimalPlacesTotalPrice.cs" />
+    <Compile Remove="Data\Migrations\20200730103541_ChangeDecimalPlacesTotalPrice.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200730103644_ChangeDecimalPlacesTotalPrice.cs" />
+    <Compile Remove="Data\Migrations\20200730103644_ChangeDecimalPlacesTotalPrice.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200730104026_ChangeTypeNameTotalPrice.cs" />
+    <Compile Remove="Data\Migrations\20200730104026_ChangeTypeNameTotalPrice.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200730105137_AddingAnnotationDecimalTotalPrice.cs" />
+    <Compile Remove="Data\Migrations\20200730105137_AddingAnnotationDecimalTotalPrice.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200730105255_AddingAnnotationDecimalTotalPrice.cs" />
+    <Compile Remove="Data\Migrations\20200730105255_AddingAnnotationDecimalTotalPrice.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

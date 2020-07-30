@@ -1,21 +1,20 @@
 ﻿@model DentalInformationSystem.Models.Procurement
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Unos nove nabavke";
 }
 
-<h1>Create</h1>
 
-<h4>Procurement</h4>
+<h4>Unos nove nabavke</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="ProcurmentDate" class="control-label"></label>
-                <input asp-for="ProcurmentDate" class="form-control" />
-                <span asp-validation-for="ProcurmentDate" class="text-danger"></span>
+                <label asp-for="ProcurementDate" class="control-label"></label>
+                <input asp-for="ProcurementDate" class="form-control" />
+                <span asp-validation-for="ProcurementDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="SupplierID" class="control-label"></label>
@@ -47,14 +46,14 @@
                 <span asp-validation-for="TotalPrice" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Unesi nabavku" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    @Html.ActionLink("Nazad na listu nabavki", "Index", "Procurements", null, new { @class = "btn btn-secondary" })
 </div>
 
 @section Scripts {

@@ -4,14 +4,16 @@ using DentalInformationSystem.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DentalInformationSystem.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200730102806_RenameProcurmentFields")]
+    partial class RenameProcurmentFields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -172,8 +174,8 @@ namespace DentalInformationSystem.Data.Migrations
                     b.Property<int>("SupplierID")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("TotalPrice")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("TotalPrice")
+                        .HasColumnType("int");
 
                     b.HasKey("ProcurementID");
 

@@ -36,7 +36,7 @@ namespace DentalInformationSystem.Controllers
 
             var procurement = await _context.Procurements
                 .Include(p => p.Supplier)
-                .FirstOrDefaultAsync(m => m.ProcurmentID == id);
+                .FirstOrDefaultAsync(m => m.ProcurementID == id);
             if (procurement == null)
             {
                 return NotFound();
@@ -48,7 +48,9 @@ namespace DentalInformationSystem.Controllers
         // GET: Procurements/Create
         public IActionResult Create()
         {
-            ViewData["SupplierID"] = new SelectList(_context.Suppliers, "SupplierID", "AccountNumber");
+            ViewData["SupplierID"] = new SelectList(_context.Suppliers, "SupplierID", "SupplierName");
+
+
             return View();
         }
 
@@ -57,7 +59,7 @@ namespace DentalInformationSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProcurmentID,ProcurmentDate,SupplierID,DeliveryNoteNumber,MerchandiseName,MeasureUnit,Quantity,TotalPrice")] Procurement procurement)
+        public async Task<IActionResult> Create([Bind("ProcurementID,ProcurementDate,SupplierID,DeliveryNoteNumber,MerchandiseName,MeasureUnit,Quantity,TotalPrice")] Procurement procurement)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +67,7 @@ namespace DentalInformationSystem.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SupplierID"] = new SelectList(_context.Suppliers, "SupplierID", "AccountNumber", procurement.SupplierID);
+            ViewData["SupplierID"] = new SelectList(_context.Suppliers, "SupplierID", "SupplierName", procurement.SupplierID);
             return View(procurement);
         }
 
@@ -91,9 +93,9 @@ namespace DentalInformationSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProcurmentID,ProcurmentDate,SupplierID,DeliveryNoteNumber,MerchandiseName,MeasureUnit,Quantity,TotalPrice")] Procurement procurement)
+        public async Task<IActionResult> Edit(int id, [Bind("ProcurementID,ProcurementDate,SupplierID,DeliveryNoteNumber,MerchandiseName,MeasureUnit,Quantity,TotalPrice")] Procurement procurement)
         {
-            if (id != procurement.ProcurmentID)
+            if (id != procurement.ProcurementID)
             {
                 return NotFound();
             }
@@ -107,7 +109,7 @@ namespace DentalInformationSystem.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProcurementExists(procurement.ProcurmentID))
+                    if (!ProcurementExists(procurement.ProcurementID))
                     {
                         return NotFound();
                     }
@@ -118,7 +120,7 @@ namespace DentalInformationSystem.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SupplierID"] = new SelectList(_context.Suppliers, "SupplierID", "AccountNumber", procurement.SupplierID);
+            ViewData["SupplierID"] = new SelectList(_context.Suppliers, "SupplierID", "SupplierName", procurement.SupplierID);
             return View(procurement);
         }
 
@@ -132,7 +134,7 @@ namespace DentalInformationSystem.Controllers
 
             var procurement = await _context.Procurements
                 .Include(p => p.Supplier)
-                .FirstOrDefaultAsync(m => m.ProcurmentID == id);
+                .FirstOrDefaultAsync(m => m.ProcurementID == id);
             if (procurement == null)
             {
                 return NotFound();
@@ -154,7 +156,7 @@ namespace DentalInformationSystem.Controllers
 
         private bool ProcurementExists(int id)
         {
-            return _context.Procurements.Any(e => e.ProcurmentID == id);
+            return _context.Procurements.Any(e => e.ProcurementID == id);
         }
     }
 }

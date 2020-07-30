@@ -1,26 +1,26 @@
 ﻿@model DentalInformationSystem.Models.Procurement
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalji nabavke";
 }
 
-<h1>Details</h1>
+
 
 <div>
-    <h4>Procurement</h4>
+    <h4>Detalji nabavke</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ProcurmentDate)
+            @Html.DisplayNameFor(model => model.ProcurementDate)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ProcurmentDate)
+            @Html.DisplayFor(model => model.ProcurementDate)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Supplier)
+            @Html.DisplayNameFor(model => model.Supplier.SupplierName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Supplier.AccountNumber)
+            @Html.DisplayFor(model => model.Supplier.SupplierName)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.DeliveryNoteNumber)
@@ -55,6 +55,8 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.ProcurmentID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.ProcurementID" class="btn btn-secondary">Izmeni</a>
+    <div>
+        @Html.ActionLink("Nazad na listu nabavki", "Index", "Procurements", null, new { @class = "btn btn-secondary" })
+    </div>
 </div>

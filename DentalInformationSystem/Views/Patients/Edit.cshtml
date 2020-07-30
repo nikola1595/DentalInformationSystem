@@ -51,11 +51,14 @@
             <div class="form-group">
                 <input type="submit" value="Sačuvaj izmene" class="btn btn-primary" />
             </div>
-            @Html.ActionLink("Nazad na listu pacijenata", "Index", "Patients", null, new { @class = "btn btn-secondary" })
+           
         </form>
     </div>
 </div>
-
+<div>
+    <br />
+    @Html.ActionLink("Nazad na listu nabavki", "Index", "Procurments", null, new { @class = "btn btn-secondary" })
+</div>
 
 
 @section Scripts {
