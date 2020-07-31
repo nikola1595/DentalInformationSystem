@@ -12,6 +12,7 @@ using DentalInformationSystem.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Rotativa.AspNetCore;
 
 namespace DentalInformationSystem
 {
@@ -55,6 +56,7 @@ namespace DentalInformationSystem
 
             app.UseRouting();
 
+            RotativaConfiguration.Setup(env.WebRootPath, "Rotativa");
             app.UseAuthentication();
             app.UseAuthorization();
 

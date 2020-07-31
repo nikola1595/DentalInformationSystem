@@ -84,7 +84,7 @@ namespace DentalInformationSystem.Controllers
             {
                 return NotFound();
             }
-            ViewData["SupplierID"] = new SelectList(_context.Suppliers, "SupplierID", "AccountNumber", procurement.SupplierID);
+            ViewData["SupplierID"] = new SelectList(_context.Suppliers, "SupplierID", "SupplierName", procurement.SupplierID);
             return View(procurement);
         }
 

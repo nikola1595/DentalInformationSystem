@@ -4,12 +4,12 @@
     ViewData["Title"] = "Lista nabavki";
 }
 
-    <h4>Lista nabavki</h4>
+<h4>Lista nabavki</h4>
 
-    <p>
-        @Html.ActionLink("Dodaj novu nabavku", "Create", "Procurements", null, new { @class = "btn btn-primary" })
-    </p>
-<table class="table table-hover table-striped">
+<p>
+    @Html.ActionLink("Dodaj novu nabavku", "Create", "Procurements", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-hover cell-border" id="tblNabavka">
     <thead>
         <tr>
             <th>
@@ -37,35 +37,48 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProcurementDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Supplier.SupplierName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeliveryNoteNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MerchandiseName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MeasureUnit)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalPrice)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ProcurementID">Izmeni</a> |
-                <a asp-action="Details" asp-route-id="@item.ProcurementID">Detalji</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProcurementID">Obriši</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProcurementDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Supplier.SupplierName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeliveryNoteNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MerchandiseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MeasureUnit)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalPrice) din
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ProcurementID">Izmeni</a> |
+                    <a asp-action="Details" asp-route-id="@item.ProcurementID">Detalji</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ProcurementID">Obriši</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+@section Scripts{
+    <script>
+    $(document).ready(function () {
+        $('#tblNabavka').dataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Serbian_latin.json"
+            }
+        });
+    });
+    </script>
+}

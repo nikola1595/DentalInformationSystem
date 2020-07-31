@@ -6,10 +6,18 @@
 
 <h1>Protokol</h1>
 
-<p>
+<div>
     @Html.ActionLink("Dodaj novog pacijenta u protokol", "Create", "Protocols", null, new { @class = "btn btn-primary" })
-</p>
-<table class=" cell-border table-bordered table-hover" id="tblProtocol">
+
+
+    @Html.ActionLink("Dnevni izveštaj", "DatePickerPDF", "Protocols", null, new { @class = "btn btn-secondary" })
+    @Html.ActionLink("Opseg izveštaj", "DatePicker2PDF", "Protocols", null, new { @class = "btn btn-secondary" })
+</div>
+    
+    <br/>
+
+<div style="align-content:center" id="kontejner">
+    <table class="cell-border table-hover table-responsive" id="tblProtocol">
         <thead>
             <tr>
                 <th>
@@ -44,63 +52,69 @@
         </thead>
         <tbody>
             @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ProtocolID)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Date)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Patient.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Patient.Surname)
-                        </td>
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProtocolID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Patient.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Patient.Surname)
+                    </td>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Anamnesis.AnamnesisName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Diagnosis.DiagnosisCode)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Diagnosis.DiagnosisNameLatin)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Therapy.TherapyName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Signet)
-                        </td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.ProtocolID">Izmeni</a> |
-                            <a asp-action="Details" asp-route-id="@item.ProtocolID">Detalji</a> |
-                            <a asp-action="Delete" asp-route-id="@item.ProtocolID">Obriši</a>
-                        </td>
-                    </tr>
-                }
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Anamnesis.AnamnesisName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Diagnosis.DiagnosisCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Diagnosis.DiagnosisNameLatin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Therapy.TherapyName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Signet)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ProtocolID">Izmeni</a> |
+                        <a asp-action="Details" asp-route-id="@item.ProtocolID">Detalji</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ProtocolID">Obriši</a>
+                    </td>
+                </tr>
+            }
 
 
         </tbody>
 
     </table>
+</div>
 
 
 @section Scripts{
 <script>
     $(document).ready(function () {
         $('#tblProtocol').dataTable({
-            //scrollY: 400,
-            //scrollX: true,
-            //scrollColapse: true,
-            //paging: false,
+            paging: true,
+            "font- family": "Verdana, Geneva, Tahoma, sans - serif",
+            "font - size": "20px",
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Serbian_latin.json"
             }
         });
     });
+
+
+
+
+
+
 </script>
  }
 

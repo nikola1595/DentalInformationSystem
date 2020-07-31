@@ -2,80 +2,119 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+
+.navbar {
+    box-shadow: 0 5px 4px -6px #000;
+    background-color: skyblue !important
 }
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    color: #0366d6;
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-.btn-secondary{
-    padding-top : 10px;
-    margin-top : 10px;
-}
-
-.btn-danger{
-    margin-bottom : 10px;
-    padding-bottom : 10px;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
+
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
 button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+    font-size: 1rem;
+    line-height: inherit;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-top: 50px;
+    margin-bottom:50px;
+    padding: 25px, 0 20px, 0;
+    background-image: url('../image/dentalcover.jpg');
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+
+.body-content{
+    display:inline;
+
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-top: auto;
+    background-color: skyblue !important;
+    align-content: center;
+    left:0;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+.container{
+    display:inline;
+
+}
+
+.pb-3{
+    display: block;
+    padding-left:20px;
+    padding-right:20px;
+
+
+}
+
+header {
+    width: 100%;
+    height: 0%;
+    position: absolute;
+    /*    padding-right:20px;*/
+    top: 0;
+    left: 0;
+    
 }

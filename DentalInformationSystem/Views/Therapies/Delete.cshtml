@@ -21,17 +21,14 @@
             @Html.DisplayNameFor(model => model.Price)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
+            @Html.DisplayFor(model => model.Price) din
         </dd>
     </dl>
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="TherapyID" />
-        <input type="submit" value="Obriši stavku iz cenovnika" class="btn btn-danger" />
-        
-        <div>
-            <br />
-            @Html.ActionLink("Nazad na cenovnik", "Index", "Therapies", null, new { @class = "btn btn-secondary" })
-        </div>
+        @Html.ActionLink("Obriši stavku iz cenovnika", "Delete", "Therapies", null, new { @class = "btn btn-danger" })
+        @Html.ActionLink("Nazad na cenovnik", "Index", "Therapies", null, new { @class = "btn btn-secondary" })
+
     </form>
 </div>

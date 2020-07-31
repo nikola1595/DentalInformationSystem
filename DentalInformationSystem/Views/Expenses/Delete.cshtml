@@ -34,12 +34,8 @@
     <form asp-action="Delete">
         <input type="hidden" asp-for="ExpenseID" />
         <input type="submit" value="Obriši stavku iz rashoda" class="btn btn-danger" />
-
-    </form>
-    <div>
-        <br />
         @Html.ActionLink("Nazad na listu rashoda", "Index", "Expenses", null, new { @class = "btn btn-secondary" })
-    </div>
-     
+    </form>
+   
     
 </div>

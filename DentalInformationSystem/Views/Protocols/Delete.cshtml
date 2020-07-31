@@ -99,11 +99,9 @@
 
     <form asp-action="Delete">
         <input type="hidden" asp-for="ProtocolID" />
-        <input type="submit" value="Obriši podatke o pacijentu u protokolu" class="btn btn-danger" />
+        @Html.ActionLink("Obriši podatke o pacijentu u protokolu", "Delete", "Protocols", null, new { @class = "btn btn-danger" })
+        @Html.ActionLink("Nazad na listu pacijenata", "Index", "Protocols", null, new { @class = "btn btn-secondary" })
     </form>
-    <div>
-        <br />
-        @Html.ActionLink("Nazad na protokol", "Index", "Protocols", null, new { @class = "btn btn-secondary" })
-    </div>
+    
     
 </div>

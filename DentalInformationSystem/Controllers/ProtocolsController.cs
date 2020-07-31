@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using DentalInformationSystem.Data;
 using DentalInformationSystem.Models;
 using Newtonsoft.Json;
+using Rotativa.AspNetCore;
+using DentalInformationSystem.ViewModels;
 
 namespace DentalInformationSystem.Controllers
 {
@@ -265,6 +267,46 @@ namespace DentalInformationSystem.Controllers
             return _context.Protocols.Any(e => e.ProtocolID == id);
         }
 
+        public IActionResult GeneratePDF(DateTime date)
+        {
+            var protocolByDate = _context.Protocols
+                .Include(p => p.Patient)
+                .Include(t => t.Therapy)
+                .Include(a =>a.Anamnesis)
+                .Include(d => d.Diagnosis).Where(x => x.Date == date).OrderBy(x=> x.Date).ToList();
+
+
+            return new ViewAsPdf("DailyReportProtocol",protocolByDate);
+        }
+
+
+        public IActionResult GeneratePDFRange(DateTime date1, DateTime date2, ProtocolDatesViewModel vm)
+        {
+            
+            date1 = vm.StartDate;
+            date2 = vm.EndDate;
+
+            var protocolByDates = _context.Protocols
+                .Include(p => p.Patient)
+                .Include(t => t.Therapy)
+                .Include(a => a.Anamnesis)
+                .Include(d => d.Diagnosis).Where(x => x.Date >= date1 && x.Date <= date2).OrderBy(x => x.Date).ToList();
+
+
+
+            return new ViewAsPdf("RangeReportProtocol", protocolByDates);
+        }
+
+
+
+        public IActionResult DatePickerPDF()
+        {
+            return View("DatePickerPDF");
+        }
+        public IActionResult DatePicker2PDF()
+        {
+            return View("DatePicker2PDF");
+        }
 
     }
 }

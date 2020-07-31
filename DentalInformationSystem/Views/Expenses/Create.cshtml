@@ -1,12 +1,12 @@
 ﻿@model DentalInformationSystem.Models.Expense
 
 @{
-    ViewData["Title"] = "Novi rashod";
+    ViewData["Title"] = "Unos novog rashoda";
 }
 
 
 
-    <h4>Novi rashod</h4>
+    <h4>Unos novog rashoda</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -36,13 +36,11 @@
             <div class="form-group">
                 <input type="submit" value="Unesi rashod" class="btn btn-primary" />
             </div>
+            @Html.ActionLink("Nazad na listu rashoda", "Index", "Expenses", null, new { @class = "btn btn-secondary" })
         </form>
     </div>
 </div>
 
-<p>
-    @Html.ActionLink("Nazad na listu rashoda", "Create", "Expenses", null, new { @class = "btn btn-secondary" })
-</p>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

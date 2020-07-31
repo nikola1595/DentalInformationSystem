@@ -5,9 +5,11 @@ table.dataTable {
   max-width: none !important;
   border-collapse: separate !important;
   border-spacing: 0;
+
 }
 table.dataTable td,
 table.dataTable th {
+
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
 }

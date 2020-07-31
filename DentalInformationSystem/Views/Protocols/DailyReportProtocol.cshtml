@@ -1,0 +1,114 @@
+﻿@model IEnumerable<DentalInformationSystem.Models.Protocol>
+
+@{
+    ViewData["Title"] = "Dnevni izveštaj protokola";
+    Layout = null;
+}
+
+<h1 style="text-align:center">Dnevni izveštaj protokola</h1>
+
+<style>
+    table {
+        width: 100%;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 15px;
+        text-align: left;
+        text-size-adjust: auto;
+    }
+
+    #DailyProtocol tr:nth-child(even) {
+        background-color: #eee;
+    }
+
+    #DailyProtocol tr:nth-child(odd) {
+        background-color: #fff;
+    }
+
+    #DailyProtocol th {
+        background-color: teal;
+        color: white;
+    }
+</style>
+
+
+<table style="width: 100%" class="cell-border table-bordered table-hover" id="DailyProtocol">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProtocolID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Patient.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Patient.Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Anamnesis.AnamnesisName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diagnosis.DiagnosisCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiagnosisID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Therapy.TherapyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Signet)
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProtocolID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Patient.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Patient.Surname)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Anamnesis.AnamnesisName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Diagnosis.DiagnosisCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Diagnosis.DiagnosisNameLatin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Therapy.TherapyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Signet)
+                </td>
+
+            </tr>
+        }
+
+
+    </tbody>
+
+</table>
+
