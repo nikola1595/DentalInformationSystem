@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DentalInformationSystem.Data;
 using DentalInformationSystem.Models;
+using Rotativa.AspNetCore;
 
 namespace DentalInformationSystem.Controllers
 {
@@ -148,6 +149,16 @@ namespace DentalInformationSystem.Controllers
         private bool TherapyExists(int id)
         {
             return _context.Therapies.Any(e => e.TherapyID == id);
+        }
+
+
+
+        public IActionResult PrintListOfRates()
+        {
+
+            var listOfRates = _context.Therapies.ToList();
+
+            return new ViewAsPdf("ListOfRates", listOfRates);
         }
     }
 }

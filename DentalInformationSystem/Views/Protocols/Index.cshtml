@@ -36,7 +36,8 @@
                     @Html.DisplayNameFor(model => model.Anamnesis.AnamnesisName)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Diagnosis.DiagnosisCode)
+                    Šifra
+                    @*@Html.DisplayNameFor(model => model.Diagnosis.DiagnosisCode)*@
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.DiagnosisID)
@@ -102,8 +103,17 @@
     $(document).ready(function () {
         $('#tblProtocol').dataTable({
             paging: true,
-            "font- family": "Verdana, Geneva, Tahoma, sans - serif",
-            "font - size": "20px",
+            "columnDefs": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                { "width": "10px", "targets": 0 }
+                
+
+            ],
+            fixedColumns: true,
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Serbian_latin.json"
             }

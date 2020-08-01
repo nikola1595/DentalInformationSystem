@@ -1,0 +1,87 @@
+﻿@model IEnumerable<DentalInformationSystem.Models.Therapy>
+
+@{
+    ViewData["Title"] = "Cenovnik";
+    Layout = null;
+}
+
+<h1 style="text-align:center">Cenovnik</h1>
+
+<style>
+    table {
+        width: 100%;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 15px;
+        text-align: left;
+        font-size: 20px;
+    }
+
+    #Cenovnik tr:nth-child(even) {
+        background-color: #eee;
+    }
+
+    #Cenovnik tr:nth-child(odd) {
+        background-color: #fff;
+    }
+
+    #RangeProtocol th {
+        color: black;
+    }
+
+    thead {
+        display: table-header-group
+    }
+
+    tfoot {
+        display: table-row-group
+    }
+
+    tr {
+        page-break-inside: avoid
+    }
+</style>
+
+
+
+
+
+<table style="border:black" class="table cell-border table-hover" id="Cenovnik">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TherapyID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TherapyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TherapyID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TherapyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price) din
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

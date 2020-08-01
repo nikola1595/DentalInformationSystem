@@ -198,6 +198,8 @@ namespace DentalInformationSystem.Controllers
 
             var AnamnezaIme = _context.Anamneses.Single(a => a.AnamnesisName == Anamneza);
 
+            protocol.Signet = "Pacijentima dato obaveštenje o članu 11 zakona o pravima pacijenata";
+
             protocol.TherapyID = TerapijaIme.TherapyID;
             protocol.DiagnosisID = DijagnozaIme.DiagnosisID;
 
