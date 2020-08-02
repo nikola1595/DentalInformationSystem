@@ -1,11 +1,11 @@
-﻿@model IEnumerable<DentalInformationSystem.Models.Protocol>
+﻿@model DentalInformationSystem.ViewModels.ProtocolDatesViewModel
 
 @{
     ViewData["Title"] = "Mesečni izveštaj";
     Layout = null;
 }
 
-<h1 style="text-align:center">Izveštaj protokola</h1>
+<h1 style="text-align:center">Izveštaj protokola od @Model.StartDate.ToString("dd/MM/yyyy") do @Model.EndDate.ToString("dd/MM/yyyy") </h1>
 
 <style>
     table {
@@ -41,37 +41,37 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ProtocolID)
+                Redni broj
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Date)
+                Datum
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Patient.Name)
+               Ime pacijenta
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Patient.Surname)
+                Prezime
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Anamnesis.AnamnesisName)
+                Anamenza
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Diagnosis.DiagnosisCode)
+                Šifra dijagnoze
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Diagnosis.DiagnosisNameLatin)
+                Dijagnoza latinski
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Therapy.TherapyName)
+                Naziv usluge
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Signet)
+                Pečat
             </th>
 
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Protocols)
         {
             <tr>
                 <td>

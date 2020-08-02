@@ -6,42 +6,126 @@
 
 <h1>Rashodi</h1>
 
+
+
 <p>
     @Html.ActionLink("Unesi novi rashod", "Create", "Expenses", null, new { @class = "btn btn-primary" })
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ExpenseDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ExpensesTypeID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ExpenseDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ExpensesType.ExpensesTypeName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price) din
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ExpenseID">Izmeni</a> |
-                @*<a asp-action="Details" asp-route-id="@item.ExpenseID">Detalji</a> |*@
-                <a asp-action="Delete" asp-route-id="@item.ExpenseID">Obriši</a>
-            </td>
-        </tr>
+
+<div id="kontejner">
+    <table class="display dataTable" table id="tblRashodi">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ExpenseDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ExpensesTypeID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ExpenseDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ExpensesType.ExpensesTypeName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ExpenseID">Izmeni</a> |
+                        @*<a asp-action="Details" asp-route-id="@item.ExpenseID">Detalji</a> |*@
+                        <a asp-action="Delete" asp-route-id="@item.ExpenseID">Obriši</a>
+                    </td>
+                </tr>
+
+            }
+
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="2" style="text-align:right">Ukupna cena: </th>
+                <th colspan="2"></th>
+            </tr>
+        </tfoot>
+
+    </table>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js">
+</script>
+@section Scripts{
+    <script>
+
+
+        $(document).ready(function () {
+            $('#tblRashodi').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Serbian_latin.json"
+                },
+                footerCallback: function (row, data, start, end, display) {
+                    var api = this.api();
+                    // Remove the formatting to get integer data for summation
+                    var intVal = function (i) {
+
+                        return typeof i === 'string' ?
+                            i.replace(/[\$,]/g, '') * 1 :
+                            typeof i === 'number' ?
+                                i : 0;
+
+                    };
+
+                    if (api.column(2).data().length) {
+                        var TotalPrice = api
+                            .column(2)
+                            .data()
+                            .reduce(function (a, b) {
+                                return intVal(a) + intVal(b);
+                            })
+                    }
+                    else { TotalPrice = 0 };
+
+
+                    if (api.column(2).data().length) {
+                        var pagePrice = api
+                            .column(2, { page: 'current' })
+                            .data()
+                            .reduce(function (a, b) {
+                                return intVal(a) + intVal(b);
+                            })
+                    }
+                    else { pagePrice = 0 };
+
+                    
+                    $(api.column(2).footer()).html(
+                        TotalPrice + ' din (' + pagePrice + ' din )' 
+                    );
+                }
+                
+            });
+        });
+
+
+
+    </script>
 }
-    </tbody>
-</table>
+
+
+

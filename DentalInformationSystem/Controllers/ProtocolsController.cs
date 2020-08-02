@@ -282,11 +282,9 @@ namespace DentalInformationSystem.Controllers
         }
 
 
-        public IActionResult GeneratePDFRange(DateTime date1, DateTime date2, ProtocolDatesViewModel vm)
+        public IActionResult GeneratePDFRange(DateTime date1, DateTime date2)
         {
-            
-            date1 = vm.StartDate;
-            date2 = vm.EndDate;
+
 
             var protocolByDates = _context.Protocols
                 .Include(p => p.Patient)
@@ -294,9 +292,14 @@ namespace DentalInformationSystem.Controllers
                 .Include(a => a.Anamnesis)
                 .Include(d => d.Diagnosis).Where(x => x.Date >= date1 && x.Date <= date2).OrderBy(x => x.Date).ToList();
 
+            var vm = new ProtocolDatesViewModel()
+            {
+                Protocols = protocolByDates,
+                StartDate = date1,
+                EndDate = date2
+            };
 
-
-            return new ViewAsPdf("RangeReportProtocol", protocolByDates);
+            return new ViewAsPdf("RangeReportProtocol", vm);
         }
 
 

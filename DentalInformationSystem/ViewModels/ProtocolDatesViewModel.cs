@@ -9,14 +9,11 @@ namespace DentalInformationSystem.ViewModels
 {
     public class ProtocolDatesViewModel
     {
-        public Protocol Protocol { get; set; }
-        public Patient Patient { get; set; }
-        public Anamnesis Anamnesis { get; set; }
-        public Diagnosis Diagnosis { get; set; }
-        public Therapy Therapy { get; set; }
-        [DataType(DataType.Date),Display(Name ="Početni datum")]
+        public IEnumerable<Protocol> Protocols { get; set; }
+        
+        [DataType(DataType.Date)]
         public DateTime StartDate { get; set; }
-        [DataType(DataType.Date), Display(Name = "Završni datum")]
+        [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
     }
 }
