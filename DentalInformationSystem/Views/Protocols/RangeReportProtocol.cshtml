@@ -18,7 +18,7 @@
     }
 
     th, td {
-        padding: 15px;
+        padding: 5px;
         text-align: left;
         font-size: 20px;
     }
@@ -35,6 +35,19 @@
         background-color: teal;
         color: white;
     }
+
+    thead {
+        display: table-header-group
+    }
+
+    tfoot {
+        display: table-row-group
+    }
+
+    tr {
+        page-break-inside: avoid
+    }
+
 </style>
 
 <table style="width: 100%" class="cell-border table-bordered table-hover" id="RangeProtocol">
@@ -64,9 +77,9 @@
             <th>
                 Naziv usluge
             </th>
-            <th>
+            @*<th>
                 Pečat
-            </th>
+            </th>*@
 
         </tr>
     </thead>
@@ -99,9 +112,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Therapy.TherapyName)
                 </td>
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.Signet)
-                </td>
+                </td>*@
 
             </tr>
         }

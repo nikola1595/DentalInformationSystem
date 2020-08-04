@@ -9,16 +9,16 @@ namespace DentalInformationSystem.Models
 {
     public class Protocol
     {
-        [Display(Name="Redni broj")]
+        [Display(Name = "Redni broj")]
         public int ProtocolID { get; set; }
         public Patient Patient { get; set; }
         public int PatientID { get; set; }
         [Required, DataType(DataType.Date), Display(Name = "Datum")]
         public DateTime Date { get; set; }
 
-        [Required, Display(Name="Anamneza"),MaxLength(255)]
+        [Required, Display(Name = "Anamneza"), MaxLength(255)]
         public Anamnesis Anamnesis { get; set; }
-        [Display(Name ="Anamneza")]
+        [Display(Name = "Anamneza")]
         public int AnamnesisID { get; set; }
         public Diagnosis Diagnosis { get; set; }
         [Required, Display(Name = "Dijagnoza")]
@@ -26,6 +26,12 @@ namespace DentalInformationSystem.Models
         public Therapy Therapy { get; set; }
         [Display(Name = "Terapija")]
         public int TherapyID { get; set; }
+        [Display(Name ="Beleške")]
+        public string Notes { get; set; }
+        
+        [Display(Name = "Plaćena usluga")]
+        public bool PaidFavor {get;set;}
+
         [Required, Display(Name = "Pečat"), MaxLength(255)]
         public string Signet { get; set; }
 

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +6,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DentalInformationSystem.Data;
 using DentalInformationSystem.Models;
-using Newtonsoft.Json;
 using Rotativa.AspNetCore;
 using DentalInformationSystem.ViewModels;
 
@@ -100,7 +98,7 @@ namespace DentalInformationSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProtocolID,PatientID,Date,AnamnesisID,DiagnosisID,TherapyID")] Protocol protocol, string Dijagnoza,string Pacijent,string Terapija, string Anamneza)
+        public async Task<IActionResult> Create([Bind("ProtocolID,PatientID,Date,AnamnesisID,DiagnosisID,TherapyID,Notes,PaidFavor")] Protocol protocol, string Dijagnoza,string Pacijent,string Terapija, string Anamneza)
         {
 
 
@@ -122,6 +120,7 @@ namespace DentalInformationSystem.Controllers
 
             protocol.Signet = "Pacijentima dato obaveštenje o članu 11 zakona o pravima pacijenata";
 
+            
 
             _context.Add(protocol);
             await _context.SaveChangesAsync();
@@ -183,12 +182,13 @@ namespace DentalInformationSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProtocolID,PatientID,Date,AnamnesisID,DiagnosisID,TherapyID")] Protocol protocol, string Dijagnoza, string Terapija, string Anamneza)
+        public async Task<IActionResult> Edit(int id, [Bind("ProtocolID,PatientID,Date,AnamnesisID,DiagnosisID,TherapyID,Notes,PaidFavor")] Protocol protocol, string Dijagnoza, string Terapija, string Anamneza)
         {
             if (id != protocol.ProtocolID)
             {
                 return NotFound();
             }
+
 
             var PacijentInDb = _context.Patients.Single(p => p.PatientID == protocol.PatientID);
 
@@ -199,7 +199,9 @@ namespace DentalInformationSystem.Controllers
             var AnamnezaIme = _context.Anamneses.Single(a => a.AnamnesisName == Anamneza);
 
             protocol.Signet = "Pacijentima dato obaveštenje o članu 11 zakona o pravima pacijenata";
+            
 
+            
             protocol.TherapyID = TerapijaIme.TherapyID;
             protocol.DiagnosisID = DijagnozaIme.DiagnosisID;
 
@@ -313,5 +315,18 @@ namespace DentalInformationSystem.Controllers
             return View("DatePicker2PDF");
         }
 
+
+        public IActionResult GenerateIncome()
+        {
+            var income = _context.Protocols
+                .Include(p => p.Patient)
+                .Include(t => t.Therapy)
+                .Include(a => a.Anamnesis)
+                .Include(d => d.Diagnosis).Where(x => x.PaidFavor == true).ToList();
+
+
+
+            return new ViewAsPdf("IncomeReport",income);
+        }
     }
 }

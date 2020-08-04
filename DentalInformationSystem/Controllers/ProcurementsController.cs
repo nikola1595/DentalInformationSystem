@@ -59,10 +59,11 @@ namespace DentalInformationSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProcurementID,ProcurementDate,SupplierID,DeliveryNoteNumber,MerchandiseName,MeasureUnit,Quantity,TotalPrice")] Procurement procurement)
+        public async Task<IActionResult> Create([Bind("ProcurementID,ProcurementDate,SupplierID,DeliveryNoteNumber,MerchandiseName,MeasureUnit,UnitPrice,Quantity")] Procurement procurement)
         {
             if (ModelState.IsValid)
             {
+                procurement.TotalPrice = procurement.UnitPrice * procurement.Quantity;
                 _context.Add(procurement);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -93,7 +94,7 @@ namespace DentalInformationSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProcurementID,ProcurementDate,SupplierID,DeliveryNoteNumber,MerchandiseName,MeasureUnit,Quantity,TotalPrice")] Procurement procurement)
+        public async Task<IActionResult> Edit(int id, [Bind("ProcurementID,ProcurementDate,SupplierID,DeliveryNoteNumber,MerchandiseName,MeasureUnit,UnitPrice,Quantity")] Procurement procurement)
         {
             if (id != procurement.ProcurementID)
             {
@@ -102,8 +103,10 @@ namespace DentalInformationSystem.Controllers
 
             if (ModelState.IsValid)
             {
+                procurement.TotalPrice = procurement.UnitPrice * procurement.Quantity;
                 try
                 {
+
                     _context.Update(procurement);
                     await _context.SaveChangesAsync();
                 }

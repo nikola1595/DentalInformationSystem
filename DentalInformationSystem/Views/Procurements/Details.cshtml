@@ -59,6 +59,12 @@
             @Html.DisplayFor(model => model.MeasureUnit)
         </dd>
         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </dt>
+        <dd class="col-sm-10">
+            @Model.UnitPrice.ToString("0") din
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Quantity)
         </dt>
         <dd class="col-sm-10">
@@ -74,7 +80,6 @@
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.ProcurementID" class="btn btn-secondary">Izmeni podatke o nabavci</a>
-    <div>
-        @Html.ActionLink("Nazad na listu nabavki", "Index", "Procurements", null, new { @class = "btn btn-secondary" })
-    </div>
+    @Html.ActionLink("Nazad na listu nabavki", "Index", "Procurements", null, new { @class = "btn btn-secondary" })
+
 </div>

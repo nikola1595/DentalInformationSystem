@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Dodaj novu nabavku", "Create", "Procurements", null, new { @class = "btn btn-primary" })
 </p>
-<table class="table table-hover cell-border" id="tblNabavka">
+<table class="table table-hover cell-border table-responsive" id="tblNabavka">
     <thead>
         <tr>
             <th>
@@ -26,6 +26,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.MeasureUnit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnitPrice)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Quantity)
@@ -56,10 +59,13 @@
                     @Html.DisplayFor(modelItem => item.MeasureUnit)
                 </td>
                 <td>
+                    @item.UnitPrice.ToString("0") din
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.Quantity)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TotalPrice) din
+                    @item.TotalPrice.ToString("0") din
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.ProcurementID">Izmeni</a> |
@@ -69,16 +75,57 @@
             </tr>
         }
     </tbody>
+    <tfoot style="width:100%">
+        <tr>
+            <th colspan="1" style="text-align:center">Ukupno po računu:</th>
+            <th rowspan="1"></th>
+        </tr>
 </table>
 
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js">
+</script>
 @section Scripts{
     <script>
-    $(document).ready(function () {
-        $('#tblNabavka').dataTable({
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Serbian_latin.json"
-            }
+
+
+        $(document).ready(function () {
+            $('#tblNabavka').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Serbian_latin.json"
+                },
+                footerCallback: function (row, data, start, end, display) {
+                    var api = this.api();
+                    // Remove the formatting to get integer data for summation
+                    var intVal = function (i) {
+
+                        return typeof i === 'string' ?
+                            i.replace(/[\, din]/g, '') * 1 :
+                            typeof i === 'number' ?
+                                i : 0;
+
+                    };
+
+
+                    if (api.column(7).data().length) {
+                        var pagePrice = api
+                            .column(7, { page: 'current' })
+                            .data()
+                            .reduce(function (a, b) {
+                                return intVal(a) + intVal(b);
+                            })
+                    }
+                    else { pagePrice = 0 };
+
+
+                    $(api.column(1).footer()).html(pagePrice + ' din');
+                }
+
+            });
         });
-    });
+
+
+
     </script>
+
 }

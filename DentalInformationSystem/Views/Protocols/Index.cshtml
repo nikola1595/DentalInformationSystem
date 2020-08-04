@@ -45,9 +45,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Therapy.TherapyName)
                 </th>
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model.Signet)
-                </th>
+                </th>*@
                 <th>Opcije</th>
             </tr>
         </thead>
@@ -80,9 +80,9 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Therapy.TherapyName)
                     </td>
-                    <td>
+                    @*<td>
                         @Html.DisplayFor(modelItem => item.Signet)
-                    </td>
+                    </td>*@
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.ProtocolID">Izmeni</a> |
                         <a asp-action="Details" asp-route-id="@item.ProtocolID">Detalji</a> |
@@ -103,17 +103,6 @@
     $(document).ready(function () {
         $('#tblProtocol').dataTable({
             paging: true,
-            "columnDefs": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                { "width": "10px", "targets": 0 }
-                
-
-            ],
-            fixedColumns: true,
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Serbian_latin.json"
             }

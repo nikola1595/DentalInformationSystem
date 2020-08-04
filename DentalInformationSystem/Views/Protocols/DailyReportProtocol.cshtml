@@ -18,9 +18,9 @@
     }
 
     th, td {
-        padding: 15px;
+        padding: 5px;
         text-align: left;
-        text-size-adjust: auto;
+        font-size: 20px;
     }
 
     #DailyProtocol tr:nth-child(even) {
@@ -65,10 +65,10 @@
             <th>
                 @Html.DisplayNameFor(model => model.Therapy.TherapyName)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Signet)
-            </th>
-            
+            </th>*@
+
         </tr>
     </thead>
     <tbody>
@@ -100,9 +100,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Therapy.TherapyName)
                 </td>
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.Signet)
-                </td>
+                </td>*@
 
             </tr>
         }

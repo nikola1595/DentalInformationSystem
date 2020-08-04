@@ -60,6 +60,8 @@
     <Compile Remove="Data\Migrations\20200730105137_AddingAnnotationDecimalTotalPrice.Designer.cs" />
     <Compile Remove="Data\Migrations\20200730105255_AddingAnnotationDecimalTotalPrice.cs" />
     <Compile Remove="Data\Migrations\20200730105255_AddingAnnotationDecimalTotalPrice.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200803102137_AddingUnitPriceProcurementModel.cs" />
+    <Compile Remove="Data\Migrations\20200803102137_AddingUnitPriceProcurementModel.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

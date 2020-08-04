@@ -1,8 +1,15 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Finansije";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Dobrodošli</h1>
+    <div class="text-center">
+        <h2>Finansije</h2>
 
-</div>
+        <div style="padding-top: 50px">
+            @Html.ActionLink("Rashodi", "Index", "Expenses", null, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Prihodi", "GenerateIncome", "Protocols", null, new { @class = "btn btn-primary" })
+        </div>
+        
+        
+
+    </div>

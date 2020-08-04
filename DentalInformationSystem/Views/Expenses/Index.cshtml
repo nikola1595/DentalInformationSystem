@@ -43,7 +43,7 @@
                         @Html.DisplayFor(modelItem => item.ExpensesType.ExpensesTypeName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Price)
+                        @item.Price.ToString("0") din
                     </td>
 
                     <td>
@@ -59,7 +59,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <th colspan="2" style="text-align:right">Ukupna cena: </th>
+                <th colspan="2" style="text-align:right">Ukupan rashod: </th>
                 <th colspan="2"></th>
             </tr>
         </tfoot>
@@ -86,7 +86,7 @@
                     var intVal = function (i) {
 
                         return typeof i === 'string' ?
-                            i.replace(/[\$,]/g, '') * 1 :
+                            i.replace(/[\, din]/g, '') * 1 :
                             typeof i === 'number' ?
                                 i : 0;
 

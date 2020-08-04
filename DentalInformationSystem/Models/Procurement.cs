@@ -22,7 +22,10 @@ namespace DentalInformationSystem.Models
         public string MerchandiseName { get; set; }
         [Required,Display(Name = "j/m")]
         public string MeasureUnit { get; set; }
-        [Required,Display(Name = "Količina")]
+
+        [Required,Display(Name = "Cena proizvoda")]
+        public decimal UnitPrice { get; set; }
+        [Required, Display(Name = "Količina")]
         public int Quantity { get; set; }
         [Required,Display(Name = "Ukupno za plaćanje"), Column(TypeName = "decimal(18,2)")]
         public decimal TotalPrice { get; set; }
