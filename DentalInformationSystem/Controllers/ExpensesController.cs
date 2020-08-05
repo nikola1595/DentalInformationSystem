@@ -10,9 +10,11 @@ using DentalInformationSystem.Models;
 using System.Security.Cryptography.X509Certificates;
 using DentalInformationSystem.ViewModels;
 using Rotativa.AspNetCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DentalInformationSystem.Controllers
 {
+    [Authorize]
     public class ExpensesController : Controller
     {
         private readonly ApplicationDbContext _context;

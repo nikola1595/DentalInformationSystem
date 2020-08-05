@@ -70,10 +70,10 @@ html {
 
 body {
     /* Margin bottom by footer height */
-    margin-top: 50px;
-    margin-bottom:50px;
-    padding: 25px, 0 20px, 0;
-    background-image: url('../image/dentalcover.jpg');
+        margin-top: 50px;
+    margin-bottom: 50px;
+/*    padding: 25px, 0 20px, 0;*/
+    background-image: url('../image/light-blue-wallpaper-22.jpg');
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -100,6 +100,7 @@ footer {
 
 .container{
     display:inline;
+   
 
 }
 
@@ -136,11 +137,26 @@ th {
 
 td {
     font-size: 18px;
-    white-space:nowrap;
+
 }
 
+.dropdown,
+.dropup {
+    position: relative
+}
 
-
+.dropdown-toggle::after {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: .255em;
+    vertical-align: .255em;
+    content: "";
+    border-top: .3em solid;
+    border-right: .3em solid transparent;
+    border-bottom: 0;
+    border-left: .3em solid transparent
+}
 
 
 

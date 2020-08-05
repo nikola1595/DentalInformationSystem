@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Lista nabavki";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h4>Lista nabavki</h4>
@@ -9,7 +10,7 @@
 <p>
     @Html.ActionLink("Dodaj novu nabavku", "Create", "Procurements", null, new { @class = "btn btn-primary" })
 </p>
-<table class="table-bordered table-hover" width="100%" id="tblNabavka">
+<table class="cell-border table-hover" width="100%" id="tblNabavka">
     <thead>
         <tr>
             <th>
@@ -73,17 +74,23 @@
                     <a asp-action="Delete" asp-route-id="@item.ProcurementID">Obriši</a>
                 </td>
             </tr>
+
         }
+        
+
     </tbody>
+    
     <tfoot style="width:100%">
+        
         <tr>
+            
             <th colspan="1" style="text-align:left; font-size:16px">Ukupno po računu:</th>
             <th rowspan="1"></th>
         </tr>
 </table>
 
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js">
+@*<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js">*@
 </script>
 @section Scripts{
     <script>
@@ -112,7 +119,8 @@
                             .column(7, { page: 'current' })
                             .data()
                             .reduce(function (a, b) {
-                                return intVal(a) + intVal(b);
+                                result = intVal(a) + intVal(b);
+                                return result.toFixed(2);
                             })
                     }
                     else { pagePrice = 0 };

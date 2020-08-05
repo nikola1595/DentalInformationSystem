@@ -8,9 +8,11 @@ using DentalInformationSystem.Data;
 using DentalInformationSystem.Models;
 using Rotativa.AspNetCore;
 using DentalInformationSystem.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DentalInformationSystem.Controllers
 {
+    [Authorize]
     public class ProtocolsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -110,17 +112,22 @@ namespace DentalInformationSystem.Controllers
 
             var AnamnezaIme = _context.Anamneses.Single(a => a.AnamnesisName == Anamneza);
 
-            protocol.AnamnesisID = AnamnezaIme.AnamnesisID;
-
-            protocol.PatientID = PacijentIme.PatientID;
-
-            protocol.DiagnosisID = DijagnozaIme.DiagnosisID;
-
-            protocol.TherapyID = TerapijaIme.TherapyID;
-
-            protocol.Signet = "Pacijentima dato obaveštenje o članu 11 zakona o pravima pacijenata";
-
             
+
+                protocol.AnamnesisID = AnamnezaIme.AnamnesisID;
+
+                protocol.PatientID = PacijentIme.PatientID;
+
+                protocol.DiagnosisID = DijagnozaIme.DiagnosisID;
+
+                protocol.TherapyID = TerapijaIme.TherapyID;
+
+                protocol.Signet = "Pacijentima dato obaveštenje o članu 11 zakona o pravima pacijenata";
+
+          
+
+
+
 
             _context.Add(protocol);
             await _context.SaveChangesAsync();

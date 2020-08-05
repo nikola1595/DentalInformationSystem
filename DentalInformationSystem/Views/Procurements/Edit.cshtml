@@ -51,14 +51,12 @@
             <div class="form-group">
                 <input type="submit" value="Sačuvaj izmene" class="btn btn-primary" />
             </div>
+            @Html.ActionLink("Nazad na listu nabavki", "Index", "Procurements", null, new { @class = "btn btn-secondary" })
         </form>
     </div>
 </div>
 
-<div>
-    <br />
-    @Html.ActionLink("Nazad na listu nabavki", "Index", "Procurements", null, new { @class = "btn btn-secondary" })
-</div>
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

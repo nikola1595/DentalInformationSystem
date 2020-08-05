@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using DentalInformationSystem.Data;
 using DentalInformationSystem.Models;
 using Rotativa.AspNetCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DentalInformationSystem.Controllers
 {
+    [Authorize]
     public class TherapiesController : Controller
     {
         private readonly ApplicationDbContext _context;

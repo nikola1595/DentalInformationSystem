@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DentalInformationSystem.Data;
 using DentalInformationSystem.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DentalInformationSystem.Controllers
 {
+    [Authorize]
     public class ExpensesTypesController : Controller
     {
         private readonly ApplicationDbContext _context;
