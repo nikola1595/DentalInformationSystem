@@ -13,10 +13,10 @@
     @Html.ActionLink("Dnevni izveštaj", "DatePickerPDF", "Protocols", null, new { @class = "btn btn-secondary" })
     @Html.ActionLink("Opseg izveštaj", "DatePicker2PDF", "Protocols", null, new { @class = "btn btn-secondary" })
 </div>
-    
-    <br/>
 
-<div style="align-content:center" id="kontejner">
+<br />
+
+<div style="align-content:center; overflow-x:auto" id="kontejner">
     <table class="cell-border table-hover table-responsive" id="tblProtocol">
         <thead>
             <tr>
@@ -45,9 +45,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Therapy.TherapyName)
                 </th>
-                @*<th>
+                <th>
                     @Html.DisplayNameFor(model => model.Signet)
-                </th>*@
+                </th>
                 <th>Opcije</th>
             </tr>
         </thead>
@@ -80,9 +80,9 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Therapy.TherapyName)
                     </td>
-                    @*<td>
+                    <td>
                         @Html.DisplayFor(modelItem => item.Signet)
-                    </td>*@
+                    </td>
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.ProtocolID">Izmeni</a> |
                         <a asp-action="Details" asp-route-id="@item.ProtocolID">Detalji</a> |
@@ -97,23 +97,23 @@
     </table>
 </div>
 
-
 @section Scripts{
-<script>
-    $(document).ready(function () {
-        $('#tblProtocol').dataTable({
-            paging: true,
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Serbian_latin.json"
-            }
+    <script>
+
+      $(document).ready(function () {
+            $('#tblProtocol').dataTable({
+                paging: true,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Serbian_latin.json"
+                }
+            });
         });
-    });
 
 
 
 
 
 
-</script>
- }
+    </script>
+}
 

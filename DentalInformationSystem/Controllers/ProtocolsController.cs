@@ -139,9 +139,10 @@ namespace DentalInformationSystem.Controllers
                 return NotFound();
             }
 
-            var protocol = await _context.Protocols.FindAsync(id);
-            
-            
+            var protocol = await _context.Protocols
+                .Include(p => p.Patient).FirstOrDefaultAsync(p => p.ProtocolID == id);
+
+
             if (protocol == null)
             {
                 return NotFound();
@@ -315,18 +316,32 @@ namespace DentalInformationSystem.Controllers
             return View("DatePicker2PDF");
         }
 
-
-        public IActionResult GenerateIncome()
+        public IActionResult DatePicker2IncomePDF()
         {
-            var income = _context.Protocols
+            return View("DatePicker2IncomePDF");
+        }
+
+        public IActionResult GenerateIncome(DateTime date1, DateTime date2)
+        {
+            var incomeByDates = _context.Protocols
                 .Include(p => p.Patient)
                 .Include(t => t.Therapy)
                 .Include(a => a.Anamnesis)
-                .Include(d => d.Diagnosis).Where(x => x.PaidFavor == true).ToList();
+                .Include(d => d.Diagnosis).Where(x => x.Date >= date1 && x.Date <= date2).ToList();
 
 
+            incomeByDates = incomeByDates.Where(x => x.PaidFavor == true).ToList();
 
-            return new ViewAsPdf("IncomeReport",income);
+
+            var vm = new ProtocolDatesViewModel()
+            {
+                Protocols = incomeByDates,
+                StartDate = date1,
+                EndDate = date2
+            };
+
+
+            return new ViewAsPdf("IncomeReport",vm);
         }
     }
 }

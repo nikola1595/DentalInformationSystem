@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Dodaj novu nabavku", "Create", "Procurements", null, new { @class = "btn btn-primary" })
 </p>
-<table class="table table-hover cell-border table-responsive" id="tblNabavka">
+<table class="table table-hover cell-border" id="tblNabavka">
     <thead>
         <tr>
             <th>
@@ -59,13 +59,13 @@
                     @Html.DisplayFor(modelItem => item.MeasureUnit)
                 </td>
                 <td>
-                    @item.UnitPrice.ToString("0") din
+                    @item.UnitPrice din
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Quantity)
                 </td>
                 <td>
-                    @item.TotalPrice.ToString("0") din
+                    @item.TotalPrice din
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.ProcurementID">Izmeni</a> |
@@ -77,7 +77,7 @@
     </tbody>
     <tfoot style="width:100%">
         <tr>
-            <th colspan="1" style="text-align:center">Ukupno po računu:</th>
+            <th colspan="1" style="text-align:left; font-size:16px">Ukupno po računu:</th>
             <th rowspan="1"></th>
         </tr>
 </table>

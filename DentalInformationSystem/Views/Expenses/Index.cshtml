@@ -43,7 +43,7 @@
                         @Html.DisplayFor(modelItem => item.ExpensesType.ExpensesTypeName)
                     </td>
                     <td>
-                        @item.Price.ToString("0") din
+                        @item.Price din
                     </td>
 
                     <td>
@@ -115,7 +115,7 @@
 
                     
                     $(api.column(2).footer()).html(
-                        TotalPrice + ' din (' + pagePrice + ' din )' 
+                        TotalPrice + ' din (' + pagePrice + ')' 
                     );
                 }
                 
