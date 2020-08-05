@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Dodaj novu nabavku", "Create", "Procurements", null, new { @class = "btn btn-primary" })
 </p>
-<table class="table table-hover cell-border table-responsive" id="tblNabavka">
+<table class="table-bordered table-hover" width="100%" id="tblNabavka">
     <thead>
         <tr>
             <th>
@@ -67,7 +67,7 @@
                 <td>
                     @item.TotalPrice din
                 </td>
-                <td>
+                <td style="padding:5px">
                     <a asp-action="Edit" asp-route-id="@item.ProcurementID">Izmeni</a> |
                     <a asp-action="Details" asp-route-id="@item.ProcurementID">Detalji</a> |
                     <a asp-action="Delete" asp-route-id="@item.ProcurementID">Obriši</a>

@@ -183,7 +183,7 @@ namespace DentalInformationSystem.Controllers
         }
 
 
-        public IActionResult GenerateExpenses(DateTime date1, DateTime date2, string ProcurementNumber)
+        public IActionResult GenerateExpenses(DateTime date1, DateTime date2)
         {
             var expenses = _context.Expenses
                 .Include(et => et.ExpensesType)
@@ -192,7 +192,6 @@ namespace DentalInformationSystem.Controllers
 
             var ProcurementExpenses = _context.Procurements
                 .Include(s => s.Supplier)
-                .Where(x => x.DeliveryNoteNumber == ProcurementNumber)
                 .Where(x => x.ProcurementDate >= date1 && x.ProcurementDate <= date2).ToList();
 
 
@@ -200,7 +199,6 @@ namespace DentalInformationSystem.Controllers
             {
                 Expenses = expenses,
                 Procurements = ProcurementExpenses,
-                DeliveryNoteNumberVM = ProcurementNumber,
                 StartDate = date1,
                 EndDate = date2
             };

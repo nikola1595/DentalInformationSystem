@@ -329,6 +329,15 @@ namespace DentalInformationSystem.Controllers
                 .Include(a => a.Anamnesis)
                 .Include(d => d.Diagnosis).Where(x => x.Date >= date1 && x.Date <= date2).ToList();
 
+            var expenses = _context.Expenses
+                            .Include(et => et.ExpensesType)
+                            .Where(x => x.ExpenseDate >= date1 && x.ExpenseDate <= date2).OrderBy(x => x.ExpenseDate).ToList();
+
+
+            var ProcurementExpenses = _context.Procurements
+                .Include(s => s.Supplier)
+                .Where(x => x.ProcurementDate >= date1 && x.ProcurementDate <= date2).ToList();
+
 
             incomeByDates = incomeByDates.Where(x => x.PaidFavor == true).ToList();
 
@@ -336,6 +345,8 @@ namespace DentalInformationSystem.Controllers
             var vm = new ProtocolDatesViewModel()
             {
                 Protocols = incomeByDates,
+                Expenses = expenses,
+                Procurements = ProcurementExpenses,
                 StartDate = date1,
                 EndDate = date2
             };

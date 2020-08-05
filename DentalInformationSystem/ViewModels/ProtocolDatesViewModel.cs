@@ -10,7 +10,9 @@ namespace DentalInformationSystem.ViewModels
     public class ProtocolDatesViewModel
     {
         public IEnumerable<Protocol> Protocols { get; set; }
-        
+        public IEnumerable<Expense> Expenses { get; set; }
+        public IEnumerable<Procurement> Procurements { get; set; }
+
         [DataType(DataType.Date)]
         public DateTime StartDate { get; set; }
         [DataType(DataType.Date)]

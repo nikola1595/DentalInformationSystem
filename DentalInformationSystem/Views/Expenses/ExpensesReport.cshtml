@@ -52,8 +52,7 @@
 
 
 <h1 style="text-align:center">
-    Izveštaj rashoda od @Model.StartDate.ToString("dd/MM/yyyy") do @Model.EndDate.ToString("dd/MM/yyyy") zajedno sa
-    rashodom Računa-otpremnice No. : @Model.DeliveryNoteNumberVM
+    Izveštaj rashoda od @Model.StartDate.ToString("dd/MM/yyyy") do @Model.EndDate.ToString("dd/MM/yyyy")
 </h1>
 
 
@@ -65,6 +64,9 @@
             </th>
             <th>
                 Naziv dobavljača
+            </th>
+            <th>
+                Račun-otpremnica No.
             </th>
             <th>
                 Naziv robe
@@ -79,7 +81,7 @@
                 Količina
             </th>
             <th>
-                Ukupna cena po proizvodu
+                Ukupna cena
             </th>
 
         </tr>
@@ -93,29 +95,32 @@
         {
             CalculatedExpense += item.TotalPrice;
 
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProcurementDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Supplier.SupplierName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MerchandiseName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MeasureUnit)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UnitPrice) din
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Quantity)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TotalPrice) din
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProcurementDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Supplier.SupplierName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeliveryNoteNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MerchandiseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MeasureUnit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice) din
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPrice) din
+            </td>
+        </tr>
         }
     </tbody>
 
