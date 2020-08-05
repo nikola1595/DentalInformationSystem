@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DentalInformationSystem.Data;
 using DentalInformationSystem.Models;
+using System.Security.Cryptography.X509Certificates;
+using DentalInformationSystem.ViewModels;
+using Rotativa.AspNetCore;
 
 namespace DentalInformationSystem.Controllers
 {
@@ -171,6 +174,40 @@ namespace DentalInformationSystem.Controllers
         private bool ExpenseExists(int id)
         {
             return _context.Expenses.Any(e => e.ExpenseID == id);
+        }
+
+
+        public IActionResult DatePicker2ExpensesPDF()
+        {
+            return View("DatePicker2ExpensesPDF");
+        }
+
+
+        public IActionResult GenerateExpenses(DateTime date1, DateTime date2, string ProcurementNumber)
+        {
+            var expenses = _context.Expenses
+                .Include(et => et.ExpensesType)
+                .Where(x => x.ExpenseDate >= date1 && x.ExpenseDate <= date2).OrderBy(x => x.ExpenseDate).ToList();
+
+
+            var ProcurementExpenses = _context.Procurements
+                .Include(s => s.Supplier)
+                .Where(x => x.DeliveryNoteNumber == ProcurementNumber)
+                .Where(x => x.ProcurementDate >= date1 && x.ProcurementDate <= date2).ToList();
+
+
+            var vm = new ExpensesProcurementsViewModel()
+            {
+                Expenses = expenses,
+                Procurements = ProcurementExpenses,
+                DeliveryNoteNumberVM = ProcurementNumber,
+                StartDate = date1,
+                EndDate = date2
+            };
+
+
+            return new ViewAsPdf("ExpensesReport", vm);
+
         }
     }
 }

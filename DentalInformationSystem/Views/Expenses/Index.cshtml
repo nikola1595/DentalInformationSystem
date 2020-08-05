@@ -6,14 +6,15 @@
 
 <h1>Rashodi</h1>
 
-
-
-<p>
+    <div>
     @Html.ActionLink("Unesi novi rashod", "Create", "Expenses", null, new { @class = "btn btn-primary" })
-</p>
+    @Html.ActionLink("Rashodi izveštaj", "DatePicker2ExpensesPDF", "Expenses", null, new { @class = "btn btn-secondary"})
+    </div>
+    <br/>
+
 
 <div id="kontejner">
-    <table class="display dataTable" table id="tblRashodi">
+    <table class="display dataTable" id="tblRashodi">
         <thead>
             <tr>
                 <th>
