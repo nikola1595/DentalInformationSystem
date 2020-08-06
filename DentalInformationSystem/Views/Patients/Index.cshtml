@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Dodaj novog pacijenta", "Create", "Patients", null, new { @class = "btn btn-primary" })
 </p>
-<table class="cell-border table-bordered table-hover"width="100%" id="tblPacijent">
+<table class="cell-border table-bordered table-hover table-responsive-sm" width="100%" id="tblPacijent">
     <thead>
         <tr>
             <th>
@@ -40,35 +40,35 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Surname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.YearOfBirth)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NameOfOneParent)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.City)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telephone)
-            </td>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.YearOfBirth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameOfOneParent)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telephone)
+                </td>
 
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.PatientID">Izmeni</a> |
-                <a asp-action="Details" asp-route-id="@item.PatientID">Detalji</a> |
-                <a asp-action="Delete" asp-route-id="@item.PatientID">Obriši</a>
-            </td>
-        </tr>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.PatientID">Izmeni</a> |
+                    <a asp-action="Details" asp-route-id="@item.PatientID">Detalji</a> |
+                    <a asp-action="Delete" asp-route-id="@item.PatientID">Obriši</a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
@@ -76,14 +76,14 @@
 
 @section Scripts{
     <script>
-    $(document).ready(function () {
-        $('#tblPacijent').dataTable({
-            paging: true,
+        $(document).ready(function () {
+            $('#tblPacijent').dataTable({
+                paging: true,
 
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Serbian_latin.json"
-            }
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Serbian_latin.json"
+                }
+            });
         });
-    });
     </script>
 }

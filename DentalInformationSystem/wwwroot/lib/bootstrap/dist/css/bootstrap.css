@@ -330,7 +330,7 @@ progress {
 
 [type="search"] {
   outline-offset: -2px;
-  -webkit-appearance: none;
+  
 }
 
 [type="search"]::-webkit-search-decoration {

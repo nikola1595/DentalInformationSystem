@@ -7,14 +7,12 @@
     <div class="col-md-4">
         <form asp-action="GeneratePDFRange">
             <div class="form-group">
-                @*<label asp-for="Date" class="control-label"></label>*@
                 <label>Početni datum</label>
-                <input name="date1" class="form-control"type="date"  />
+                <input name="date1" class="form-control" type="date" />
                 <span asp-validation-for="Date" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label>Završni datum</label>
-                @*<label asp-for="EndDate" class="control-label"></label>*@
                 <input name="date2" class="form-control" type="date" />
                 <span asp-validation-for="Date" class="text-danger"></span>
             </div>

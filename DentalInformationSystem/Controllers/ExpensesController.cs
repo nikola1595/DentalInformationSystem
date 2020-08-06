@@ -90,7 +90,7 @@ namespace DentalInformationSystem.Controllers
 
 
             var expense = await _context.Expenses.Include(et => et.ExpensesType).FirstOrDefaultAsync(e => e.ExpenseID == id);
-            
+
 
 
             if (expense == null)
@@ -109,7 +109,7 @@ namespace DentalInformationSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ExpenseID,ExpenseDate,ExpensesTypeID,Price")] Expense expense,string Rashod)
+        public async Task<IActionResult> Edit(int id, [Bind("ExpenseID,ExpenseDate,ExpensesTypeID,Price")] Expense expense, string Rashod)
         {
             if (id != expense.ExpenseID)
             {

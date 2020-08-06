@@ -26,11 +26,11 @@ namespace DentalInformationSystem.Models
         public Therapy Therapy { get; set; }
         [Display(Name = "Terapija")]
         public int TherapyID { get; set; }
-        [Display(Name ="Beleške")]
+        [Display(Name = "Beleške")]
         public string Notes { get; set; }
-        
+
         [Display(Name = "Plaćena usluga")]
-        public bool PaidFavor {get;set;}
+        public bool PaidFavor { get; set; }
 
         [Required, Display(Name = "Pečat"), MaxLength(255)]
         public string Signet { get; set; }

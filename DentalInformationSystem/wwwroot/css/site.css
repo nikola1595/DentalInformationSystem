@@ -70,11 +70,13 @@ html {
 
 body {
     /* Margin bottom by footer height */
-        margin-top: 50px;
+    margin-top: 50px;
     margin-bottom: 50px;
 /*    padding: 25px, 0 20px, 0;*/
     background-image: url('../image/light-blue-wallpaper-22.jpg');
     background-size: 100%;
+    width:100%;
+    height:100%;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -157,6 +159,7 @@ td {
     border-bottom: 0;
     border-left: .3em solid transparent
 }
+
 
 
 

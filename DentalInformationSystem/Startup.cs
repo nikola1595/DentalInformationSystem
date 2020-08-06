@@ -37,6 +37,8 @@ namespace DentalInformationSystem
             services.AddRazorPages();
 
 
+
+
             services.Configure<IdentityOptions>(options =>
             {
                 // Password settings.

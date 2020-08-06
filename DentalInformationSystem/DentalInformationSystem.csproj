@@ -62,6 +62,10 @@
     <Compile Remove="Data\Migrations\20200730105255_AddingAnnotationDecimalTotalPrice.Designer.cs" />
     <Compile Remove="Data\Migrations\20200803102137_AddingUnitPriceProcurementModel.cs" />
     <Compile Remove="Data\Migrations\20200803102137_AddingUnitPriceProcurementModel.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200806101702_UnitPriceAnnotationModified.cs" />
+    <Compile Remove="Data\Migrations\20200806101702_UnitPriceAnnotationModified.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200806154722_RequiredDataListFields.cs" />
+    <Compile Remove="Data\Migrations\20200806154722_RequiredDataListFields.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

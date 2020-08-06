@@ -5,7 +5,7 @@
 }
 
 <style>
-    p{
+    p {
         width: 300px;
     }
 </style>
@@ -104,22 +104,22 @@
             </dd>
         }
 
-            <dt class="col-sm-2">
-                Status plaćanja
-            </dt>
-            @if (Model.PaidFavor == true)
-            {
-                <dd class="col-lg-10">
-                    Plaćena usluga
-                </dd>
-            }
-            else
-            {
-                
-                <dd class="col-lg-10">
-                    Nije plaćena usluga
-                </dd>
-            }
+        <dt class="col-sm-2">
+            Status plaćanja
+        </dt>
+        @if (Model.PaidFavor == true)
+        {
+            <dd class="col-lg-10">
+                Plaćena usluga
+            </dd>
+        }
+        else
+        {
+
+            <dd class="col-lg-10">
+                Nije plaćena usluga
+            </dd>
+        }
 
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Signet)

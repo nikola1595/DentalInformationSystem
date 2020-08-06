@@ -44,7 +44,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="YearOfBirth" class="control-label"></label>
-                <input asp-for="YearOfBirth" class="form-control" />
+                <input asp-for="YearOfBirth" min="1900" max="2020" class="form-control" />
                 <span asp-validation-for="YearOfBirth" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -55,7 +55,7 @@
         </form>
         @Html.ActionLink("Nazad na listu pacijenata", "Index", "Patients", null, new { @class = "btn btn-secondary" })
     </div>
-    
+
 </div>
 
 

@@ -10,7 +10,7 @@ namespace DentalInformationSystem.Models
     {
         public int DiagnosisID { get; set; }
 
-        [Required,MaxLength(5),Display(Name = "Šifra dijagnoze")]
+        [Required, MaxLength(5), Display(Name = "Šifra dijagnoze")]
         public string DiagnosisCode { get; set; }
         [Required, Display(Name = "Dijagnoza srpski")]
         public string DiagnosisNameSrb { get; set; }

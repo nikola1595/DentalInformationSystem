@@ -10,7 +10,7 @@ namespace DentalInformationSystem.Models
     public class Patient
     {
         public int PatientID { get; set; }
-        [Required,Display(Name="Ime"),StringLength(25)]
+        [Required, Display(Name = "Ime"), StringLength(25)]
         public string Name { get; set; }
         [Required, Display(Name = "Prezime"), StringLength(25)]
         public string Surname { get; set; }

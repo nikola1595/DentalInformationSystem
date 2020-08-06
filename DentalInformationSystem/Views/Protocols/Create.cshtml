@@ -28,22 +28,16 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label>Izaberite pacijenta</label>
-                <input type="search" list="data2" placeholder="unesite pacijenta" id="searchid" name="Pacijent" class="form-control" />
+                <input type="search" required list="data2" placeholder="unesite pacijenta" id="searchid" name="Pacijent" class="form-control" />
                 <datalist id="data2">
                     @foreach (var item in ViewBag.Pacijent)
                     {
                         <option value="@item.Name @item.Surname " style="font-size:18px"></option>
                     }
                 </datalist>
+                @Html.ValidationMessageFor(m => m.PatientID, "", new { @class = "text-danger" })
+                
             </div>
-
-
-
-            @*<div class="form-group">
-                    <label asp-for="PatientID" class="control-label">Izaberite pacijenta</label>
-                    <select asp-for="PatientID" class="form-control" id="PatientID" asp-items="@ViewBag.PatientID"></select>
-
-           </div>*@
             <div class="form-group">
                 <label asp-for="Date" class="control-label"></label>
                 <input asp-for="Date" class="form-control" />
@@ -51,45 +45,36 @@
             </div>
             <div class="form-group">
                 <label>Izaberite anamnezu</label>
-                <input type="search" list="data4" placeholder="unesi anamnezu" id="searchid" name="Anamneza" class="form-control" />
+                <input type="search" required list="data4" placeholder="unesi anamnezu" id="searchid" name="Anamneza" class="form-control" />
                 <datalist id="data4">
                     @foreach (var item in ViewBag.Anamneza)
                     {
                         <option value="@item.AnamnesisName"></option>
                     }
                 </datalist>
+                @Html.ValidationMessageFor(m => m.AnamnesisID, "", new { @class = "text-danger" })
             </div>
-            @*<div class="form-group">
-                    <label asp-for="Anamnesis" class="control-label"></label>
-                    <input asp-for="Anamnesis" class="form-control" />
-                    <span asp-validation-for="Anamnesis" class="text-danger"></span>
-                </div>*@
             <div class="form-group">
                 <label>Izaberite dijagnozu</label>
-                <input type="search" list="data1" placeholder="unesi dijagnozu" id="searchid" name="Dijagnoza" class="form-control" />
+                <input type="search" required list="data1" placeholder="unesi dijagnozu" id="searchid" name="Dijagnoza" class="form-control" />
                 <datalist id="data1">
                     @foreach (var item in ViewBag.Dijagnoza)
                     {
                         <option value="@item.DiagnosisNameSrb">@item.DiagnosisCode | @item.DiagnosisNameSrb | @item.DiagnosisNameLatin</option>
                     }
                 </datalist>
+                @Html.ValidationMessageFor(m => m.DiagnosisID, "", new { @class = "text-danger" })
             </div>
-            @*<div class="form-group">
-
-                    <label asp-for="Diagnosis" class="control-label">Izaberite dijagnozu</label>
-                    <select asp-for="DiagnosisID" class="form-control" id="DiagnosisID" asp-items="@ViewBag.DiagnosisID"></select>
-                    <span asp-validation-for="DiagnosisID" class="text-danger"></span>
-                </div>*@
-
             <div class="form-group">
                 <label>Izaberite terapiju</label>
-                <input type="search" list="data3" placeholder="Unesite terapiju" id="searchid" name="Terapija" class="form-control" />
+                <input type="search" required list="data3" placeholder="Unesite terapiju" id="searchid" name="Terapija" class="form-control" />
                 <datalist id="data3">
                     @foreach (var item in ViewBag.Terapija)
                     {
                         <option value="@item.TherapyName"></option>
                     }
                 </datalist>
+                @Html.ValidationMessageFor(m => m.TherapyID, "", new { @class = "text-danger" })
             </div>
             <br />
             <div class="form-group">
@@ -99,24 +84,16 @@
                 </div>
             </div>
 
-
             <div class="form-group">
-                    <label asp-for="PaidFavor" class="control-label"></label>
-                    @Html.CheckBoxFor(m => m.PaidFavor)
+                <label asp-for="PaidFavor" class="control-label"></label>
+                @Html.CheckBoxFor(m => m.PaidFavor)
             </div>
             <br />
-
-
-            @*<div class="form-group">
-            <label asp-for="Signet" class="control-label"></label>
-            <input asp-for="Signet" class="form-control" />
-            <span asp-validation-for="Signet" class="text-danger"></span>
-            </div>*@
-                <div class="form-group">
-                    <input type="submit" value="Unesi u protokol" class="btn btn-primary" />
-                </div>
-                @Html.ActionLink("Nazad na protokol", "Index", "Protocols", null, new { @class = "btn btn-secondary" })
-</form>
+            <div class="form-group">
+                <input type="submit" value="Unesi u protokol" class="btn btn-primary" />
+            </div>
+            @Html.ActionLink("Nazad na protokol", "Index", "Protocols", null, new { @class = "btn btn-secondary" })
+        </form>
     </div>
 </div>
 

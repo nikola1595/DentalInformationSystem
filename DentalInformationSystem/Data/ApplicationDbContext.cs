@@ -24,7 +24,7 @@ namespace DentalInformationSystem.Data
         public DbSet<Anamnesis> Anamneses { get; set; }
 
         public DbSet<ExpensesType> ExpensesTypes { get; set; }
-        
+
         public DbSet<Expense> Expenses { get; set; }
 
         public DbSet<Supplier> Suppliers { get; set; }

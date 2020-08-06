@@ -64,24 +64,13 @@ namespace DentalInformationSystem.Controllers
             //patients
             var patients = _context.Patients
                 .Select(p => new
-                 {
-                     p.PatientID,
-                     FullName = p.Name + " " + p.Surname
+                {
+                    p.PatientID,
+                    FullName = p.Name + " " + p.Surname
 
-                 }).ToList();
+                }).ToList();
 
-            // ViewData["Pacijent"] = new SelectList(patients, "PatientID", "FullName");
 
-            // //diagnoses
-            // var diagnoses = _context.Diagnoses
-            //.Select(d => new
-            //{
-            //    d.DiagnosisID,
-            //    DiagnoseBothNames = d.DiagnosisNameSrb + " | " + d.DiagnosisNameLatin
-
-            //}).ToList();
-
-            // ViewData["DiagnosisID"] = new SelectList(diagnoses, "DiagnosisID", "DiagnoseBothNames");
 
             ViewBag.Dijagnoza = _context.Diagnoses.ToList();
 
@@ -100,9 +89,8 @@ namespace DentalInformationSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProtocolID,PatientID,Date,AnamnesisID,DiagnosisID,TherapyID,Notes,PaidFavor")] Protocol protocol, string Dijagnoza,string Pacijent,string Terapija, string Anamneza)
+        public async Task<IActionResult> Create([Bind("ProtocolID,PatientID,Date,AnamnesisID,DiagnosisID,TherapyID,Notes,PaidFavor")] Protocol protocol, string Dijagnoza, string Pacijent, string Terapija, string Anamneza)
         {
-
 
             var DijagnozaIme = _context.Diagnoses.Single(d => d.DiagnosisNameSrb == Dijagnoza);
 
@@ -112,21 +100,16 @@ namespace DentalInformationSystem.Controllers
 
             var AnamnezaIme = _context.Anamneses.Single(a => a.AnamnesisName == Anamneza);
 
-            
 
-                protocol.AnamnesisID = AnamnezaIme.AnamnesisID;
+            protocol.AnamnesisID = AnamnezaIme.AnamnesisID;
 
-                protocol.PatientID = PacijentIme.PatientID;
+            protocol.PatientID = PacijentIme.PatientID;
 
-                protocol.DiagnosisID = DijagnozaIme.DiagnosisID;
+            protocol.DiagnosisID = DijagnozaIme.DiagnosisID;
 
-                protocol.TherapyID = TerapijaIme.TherapyID;
+            protocol.TherapyID = TerapijaIme.TherapyID;
 
-                protocol.Signet = "Pacijentima dato obaveštenje o članu 11 zakona o pravima pacijenata";
-
-          
-
-
+            protocol.Signet = "Pacijentima dato obaveštenje o članu 11 zakona o pravima pacijenata";
 
 
             _context.Add(protocol);
@@ -134,8 +117,6 @@ namespace DentalInformationSystem.Controllers
             return RedirectToAction(nameof(Index));
 
 
-            //ViewData["PatientID"] = new SelectList(_context.Patients, "PatientID", "Name", protocol.PatientID);
-            //return View(protocol);
         }
 
         // GET: Protocols/Edit/5
@@ -164,13 +145,6 @@ namespace DentalInformationSystem.Controllers
 
             ViewData["PatientID"] = new SelectList(patients, "PatientID", "FullName", protocol.PatientID);
 
-            //var diagnoses = _context.Diagnoses
-            //    .Select(d => new
-            //    {
-            //       d.DiagnosisID,
-            //       DiagnoseBothNames = d.DiagnosisNameSrb + " | " + d.DiagnosisNameLatin
-
-            //    }).ToList();
 
 
             ViewBag.Dijagnoza = _context.Diagnoses.ToList();
@@ -179,7 +153,6 @@ namespace DentalInformationSystem.Controllers
 
             ViewBag.Anamneza = _context.Anamneses.ToList();
 
-            //ViewData["DiagnosisID"] = new SelectList(diagnoses, "DiagnosisID", "DiagnoseBothNames",protocol.DiagnosisID);
 
 
             return View(protocol);
@@ -207,9 +180,9 @@ namespace DentalInformationSystem.Controllers
             var AnamnezaIme = _context.Anamneses.Single(a => a.AnamnesisName == Anamneza);
 
             protocol.Signet = "Pacijentima dato obaveštenje o članu 11 zakona o pravima pacijenata";
-            
 
-            
+
+
             protocol.TherapyID = TerapijaIme.TherapyID;
             protocol.DiagnosisID = DijagnozaIme.DiagnosisID;
 
@@ -233,12 +206,7 @@ namespace DentalInformationSystem.Controllers
             }
             return RedirectToAction(nameof(Index));
 
-            //if (ModelState.IsValid)
-            //{
 
-            //}
-            //ViewData["PatientID"] = new SelectList(_context.Patients, "PatientID", "Name", protocol.PatientID);
-            //return View(protocol);
         }
 
         // GET: Protocols/Delete/5
@@ -284,11 +252,11 @@ namespace DentalInformationSystem.Controllers
             var protocolByDate = _context.Protocols
                 .Include(p => p.Patient)
                 .Include(t => t.Therapy)
-                .Include(a =>a.Anamnesis)
-                .Include(d => d.Diagnosis).Where(x => x.Date == date).OrderBy(x=> x.Date).ToList();
+                .Include(a => a.Anamnesis)
+                .Include(d => d.Diagnosis).Where(x => x.Date == date).OrderBy(x => x.Date).ToList();
 
 
-            return new ViewAsPdf("DailyReportProtocol",protocolByDate);
+            return new ViewAsPdf("DailyReportProtocol", protocolByDate);
         }
 
 
@@ -359,7 +327,7 @@ namespace DentalInformationSystem.Controllers
             };
 
 
-            return new ViewAsPdf("IncomeReport",vm);
+            return new ViewAsPdf("IncomeReport", vm);
         }
     }
 }

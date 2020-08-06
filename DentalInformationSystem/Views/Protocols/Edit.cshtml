@@ -13,9 +13,9 @@
         -moz-transform: scale(2); /* FF */
         -webkit-transform: scale(2); /* Safari and Chrome */
         -o-transform: scale(2); /* Opera */
-        width: 30px;
-        height: 30px;
-        word-wrap: break-word;
+        width: 15px;
+        height: 15px;
+        margin-left: 5px;
         vertical-align: middle;
     }
 </style>
@@ -26,26 +26,12 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ProtocolID" />
             <input type="hidden" asp-for="PatientID" />
-            @*<div class="form-group">
-            <label asp-for="PatientID" class="control-label">Izaberite pacijenta</label>
-            <select asp-for="PatientID" class="form-control" id="PatientID" asp-items="@ViewBag.PatientID"></select>
 
-        </div>*@
-            @*<div class="form-group">
-            <label>Izaberite pacijenta</label>
-            <input type="search" list="data2" placeholder="@Model.Patient.Name @Model.Patient.Surname" id="searchid" name="Pacijent" class="form-control" />
-            <datalist id="data2">
-                @foreach (var item in ViewBag.Pacijent)
-                {
-                    <option value="@item.Name @item.Surname"></option>
-                }
-            </datalist>
-        </div>*@
-            @*<div class="form-group">
+            <div class="form-group">
                 <label asp-for="Date" class="control-label"></label>
                 <input asp-for="Date" class="form-control" />
                 <span asp-validation-for="Date" class="text-danger"></span>
-            </div>*@
+            </div>
             <div class="form-group">
                 <label>Izaberite anamnezu</label>
                 <input type="search" list="data4" placeholder="unesi anamnezu" value="@Model.Anamnesis.AnamnesisName" id="searchid" name="Anamneza" class="form-control" />
@@ -56,11 +42,7 @@
                     }
                 </datalist>
             </div>
-            @*<div class="form-group">
-            <label asp-for="Anamnesis" class="control-label"></label>
-            <input asp-for="Anamnesis" class="form-control" />
-            <span asp-validation-for="Anamnesis" class="text-danger"></span>
-            </div>*@
+
             <div class="form-group">
                 <label>Izaberite dijagnozu</label>
                 <input type="search" list="data1" placeholder="@Model.Diagnosis.DiagnosisNameSrb" value="@Model.Diagnosis.DiagnosisNameSrb" id="searchid" name="Dijagnoza" class="form-control" />
@@ -71,11 +53,7 @@
                     }
                 </datalist>
             </div>
-            @*<div class="form-group">
-            <label asp-for="DiagnosisID" class="control-label">Izaberite dijagnozu</label>
-            <select asp-for="DiagnosisID" class="form-control" id="DiagnosisID" asp-items="@ViewBag.DiagnosisID"></select>
-            <span asp-validation-for="DiagnosisID" class="text-danger"></span>
-            </div>*@
+
             <div class="form-group">
                 <label>Izaberite terapiju</label>
                 <input type="search" list="data3" placeholder="@Model.Therapy.TherapyName" value="@Model.Therapy.TherapyName" id="searchid" name="Terapija" class="form-control" />
@@ -98,12 +76,6 @@
                 @Html.CheckBoxFor(m => m.PaidFavor)
             </div>
             <br />
-
-            @*<div class="form-group">
-            <label asp-for="Signet" class="control-label"></label>
-            <input asp-for="Signet" class="form-control" />
-            <span asp-validation-for="Signet" class="text-danger"></span>
-        </div>*@
             <div class="form-group">
                 <input type="submit" value="Sačuvaj izmene" class="btn btn-primary" />
             </div>

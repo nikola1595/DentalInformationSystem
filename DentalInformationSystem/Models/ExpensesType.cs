@@ -10,7 +10,7 @@ namespace DentalInformationSystem.Models
     public class ExpensesType
     {
         public int ExpensesTypeID { get; set; }
-        [Required, Display(Name ="Naziv tipa rashoda")]
+        [Required, Display(Name = "Naziv tipa rashoda")]
         public string ExpensesTypeName { get; set; }
 
     }

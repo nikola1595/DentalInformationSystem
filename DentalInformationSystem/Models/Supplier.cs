@@ -12,8 +12,8 @@ namespace DentalInformationSystem.Models
         public int SupplierID { get; set; }
         [Required, Display(Name = "Naziv dobavljača")]
         public string SupplierName { get; set; }
-        [Required,Display(Name = "Broj računa")]
-        public string AccountNumber {get;set;}
+        [Required, Display(Name = "Broj računa")]
+        public string AccountNumber { get; set; }
         [Display(Name = "Adresa")]
         public string Address { get; set; }
         [Display(Name = "Telefon")]

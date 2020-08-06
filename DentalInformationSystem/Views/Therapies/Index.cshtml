@@ -2,16 +2,16 @@
 
 @{
     ViewData["Title"] = "Cenovnik";
-    
+
 }
 
 <h1>Cenovnik</h1>
 
 <p>
     @Html.ActionLink("Unesi novu stavku u cenovnik", "Create", "Therapies", null, new { @class = "btn btn-primary" })
-    @Html.ActionLink("Štampaj cenovnik", "PrintListOfRates", "Therapies",null, new { @class= "btn btn-secondary"})
+    @Html.ActionLink("Štampaj cenovnik", "PrintListOfRates", "Therapies", null, new { @class = "btn btn-secondary" })
 </p>
-<table align="center" style="border:black" class="table cell-border table-hover table-responsive" >
+<table align="center" style="border:black" class="table cell-border table-hover table-responsive">
     <thead>
         <tr>
             <th>
@@ -27,23 +27,24 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TherapyID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TherapyName)
-            </td>
-            <td>
-                @item.Price.ToString("0") din
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.TherapyID">Izmeni</a> |
-                @*<a asp-action="Details" asp-route-id="@item.TherapyID">Detalji</a> |*@
-                <a asp-action="Delete" asp-route-id="@item.TherapyID">Obriši</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TherapyID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TherapyName)
+                </td>
+                <td>
+                    @item.Price.ToString("0") din
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.TherapyID">Izmeni</a> |
+                    @*<a asp-action="Details" asp-route-id="@item.TherapyID">Detalji</a> |*@
+                    <a asp-action="Delete" asp-route-id="@item.TherapyID">Obriši</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
