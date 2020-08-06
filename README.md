@@ -22,6 +22,6 @@ Creating new protocol data (server-side validation)
 
 ![](PresentationImages/CreateProtocolForm.PNG)
 
-Expense report from mulitple tables throughout Dental IS ready for export to PDF.
+Expense report from multiple tables throughout Dental IS ready for export to PDF.
 
 ![](PresentationImages/ExpensesReport.PNG)
