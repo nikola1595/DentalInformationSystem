@@ -14,14 +14,14 @@ Custom reports for all periods within chosen date range and reports for all expe
 - ASP.NET Core Identity for Authentication and Authorization
 **************************************************************
 
-Regular dental protocol with option to export report to PDF
+# Regular dental protocol with option to export it to PDF
 
 ![](PresentationImages/ProtocolImage.PNG)
 
-Creating new protocol data (server-side validation)
+# Creating new protocol data (server-side validation)
 
 ![](PresentationImages/CreateProtocolForm.PNG)
 
-Expense report from multiple tables throughout Dental IS ready for export to PDF.
+# Expense report from multiple tables throughout Dental IS ready for export to PDF.
 
 ![](PresentationImages/ExpensesReport.PNG)
