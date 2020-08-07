@@ -12,7 +12,7 @@ Custom reports for all periods within chosen date range and reports for all expe
 - JavaScript/JQuery
 - Rotativa for custom reports(available exporting to PDF)
 - ASP.NET Core Identity for Authentication and Authorization
-**************************************************************
+***************************************************************
 
 # Regular dental protocol with option to export it to PDF
 
